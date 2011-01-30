@@ -1,0 +1,11 @@
+(defrelation individual-thing (?x) := (and (thing ?x) (individual ?x)) :axiom
+ (and (subclass-of individual-thing thing)
+      (subclass-of individual-thing individual)
+      (class individual-thing)))
+
+(documentation individual-thing
+               "An individual-thing is something that isn't a set, but that
+can be a member of a set.  All classes of things that are not sets are
+subclasses of individual-thing.  The KIF predicate INDIVIDUAL
+is true of all things that are not sets, but this includes
+entities that can't be members of any set (\"unbounded\" entities).")

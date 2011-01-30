@@ -1,0 +1,7 @@
+(defrelation one-to-many-relation (?r) :=
+ (and (binary-relation ?r)
+      (value-type ?r inverse function)
+      (value-cardinality ?r inverse 1))
+ :axiom
+ (and (subclass-of one-to-many-relation binary-relation)
+      (class one-to-many-relation)))

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Holders>
+	<WordHolder Name="Subclass">
+		<!-- Begin Russian -->
+		<Item Word="это" />
+		<Item Word="пример" />
+		<Item Word="подвид" />
+		<Item Word="вид" />
+		<!-- End Russian -->
+
+
+
+		<!-- Begin English -->
+		<!-- End English -->
+	</WordHolder>
+</Holders>

@@ -1,0 +1,16 @@
+(deffunction all-values
+ (<=> (all-values ?instance ?binary-relation ?set-of-values)
+  (and (binary-relation ?binary-relation)
+       (forall (?value)
+        (<=> (member ?value ?set-of-values)
+         (holds ?binary-relation ?instance ?value)))))
+ (function all-values) (nth-domain all-values 2 binary-relation)
+ (arity all-values 3))
+
+(documentation all-values
+               "ALL-VALUES is a way to state all of the the values of a slot 
+on an instance. Its third argument is a set.  If all-values are given
+for a slot on an instance, there cannot be any other values for that 
+slot on that instance.  For example, (= (ALL-VALUES i R) (setof v_1 v_2 v_3))
+means that R(i,v_1), R(i,v_2), and R(i,v_3) hold, and there is no other 
+unique v_i for which R(i,v_i) holds.")

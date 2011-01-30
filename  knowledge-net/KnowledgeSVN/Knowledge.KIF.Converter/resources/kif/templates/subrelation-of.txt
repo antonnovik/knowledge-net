@@ -1,0 +1,25 @@
+(defrelation subrelation-of (?child-relation ?parent-relation) :=
+ (and (relation ?child-relation)
+      (relation ?parent-relation)
+      (forall (?tuple)
+       (=> (member ?tuple ?child-relation) (member ?tuple ?parent-relation))))
+ :axiom
+ (and (domain subrelation-of relation)
+      (range subrelation-of relation)
+      (relation subrelation-of)
+      (arity subrelation-of 2)))
+
+(<=> (subrelation-of ?child-relation ?parent-relation)
+ (=> (holds ?child-relation @arguments) (holds ?parent-relation @arguments)))
+
+(=> (subrelation-of ?child-relation ?parent-relation)
+ (=> (defined (arity ?parent-relation))
+  (= (arity ?child-relation) (arity ?parent-relation))))
+
+(documentation subrelation-of
+               "A relation R is a subrelation-of relation R' if, viewed as sets,
+R is a subset of R'.  In other words, every tuple of R is also a tuple of
+R'.  In some more words, if R holds for some arguments arg_1, arg_2, ...
+arg_n, then R' holds for the same arguments.  Thus, a relation and its
+subrelation must have the same arity, which could be undefined.
+  In CycL, subrelation-of is called #%genlSlots.")

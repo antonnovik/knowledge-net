@@ -1,0 +1,11 @@
+(defrelation weak-transitive-relation (?r) :=
+ (and (binary-relation ?r)
+      (=> (and (holds ?r ?x ?y) (holds ?r ?y ?z) (not (= ?x ?z)))
+       (holds ?r ?x ?z)))
+ :axiom
+ (and (subclass-of weak-transitive-relation binary-relation)
+      (class weak-transitive-relation)))
+
+(documentation weak-transitive-relation
+               "Relation R is weak-transitive if R(x,y) and R(y,z) and x /= z
+implies R(x,z).")

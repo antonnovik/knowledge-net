@@ -1,0 +1,29 @@
+(defrelation subclass-of (?child-class ?parent-class) :=
+ (and (class ?parent-class)
+      (class ?child-class)
+      (forall (?instance)
+       (=> (instance-of ?instance ?child-class)
+        (instance-of ?instance ?parent-class))))
+ :axiom
+ (and (range subclass-of class)
+      (domain subclass-of class)
+      (relation subclass-of)
+      (arity subclass-of 2)))
+
+(transitive-relation subclass-of)
+
+(documentation subclass-of
+               "Class C is a subclass of parent class P if and only if 
+every instance of C is also an instance of P.  A class may 
+have multiple superclasses and subclasses. Subclass-of is transitive: 
+if (subclass-of C1 C2) and (subclass-of C2 C3) then (subclass-of C1 C3).
+   Object-centered systems sometimes distinguish between a subclass-of
+relationship that is asserted and one that is inferred.
+For example, (subclass-of C1 C3) might be inferred from
+asserting (subclass-of C1 C2) and (subclass-of C2 C3).
+The functional interfaces to such systems
+might call the asserted form something like `parents' and the inferred
+form `ancestors'.  However, both are logically identical to
+subclass-of; distinctions based on inference procedures and the
+current state of the knowledge base are not captured in this
+ontology.")

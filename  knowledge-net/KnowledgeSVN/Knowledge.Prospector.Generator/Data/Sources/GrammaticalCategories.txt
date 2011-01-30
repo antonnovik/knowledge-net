@@ -1,0 +1,192 @@
+﻿//#g_h#using System.Collections.Generic;
+#g_h# 
+#g_h#namespace Knowledge.Prospector.Morphology.Grammar
+#g_h#{
+#g_f#}
+
+
+//Common..
+#name#GrammaticalCategory - Constants
+#h#	public partial struct GrammaticalCategory
+#h#	{
+#*#		public static readonly GrammaticalCategory {0} = new GrammaticalCategory({1});
+#f#	}
+#p# GrammaticalCategory, Common
+#c#		
+#=#
+
+//Russian..
+#name#RussianGrammaticalCategories - Constants
+#h#	public static partial class RussianGrammaticalCategories
+#h#	{
+#*#		public static readonly GrammaticalCategory {0} = new GrammaticalCategory({1});
+#f#	}
+#p# GrammaticalCategory, Russian
+#c#		
+#=#
+
+#name#RussianGrammaticalCategories - Converter
+#h#	public static partial class RussianGrammaticalCategories
+#h#	{
+#h#		private static Dictionary<string, GrammaticalCategory> Converter = new Dictionary<string, GrammaticalCategory>();
+#h#		static RussianGrammaticalCategories()
+#h#		{
+#*#			Converter["{0}"] = {1};
+#f#		}
+#f#	
+#f#		public static GrammaticalCategory Convert(string str)
+#f#		{
+#f#			if (Converter.ContainsKey(str))
+#f#				return Converter[str];
+#f#			else
+#f#				return Unknown;
+#f#		}
+#f#	}
+#p# RussianConverter, GrammaticalCategory
+#c#			
+#=#
+
+//English..
+#name#EnglishGrammaticalCategories - Constants
+#h#	public static partial class EnglishGrammaticalCategories
+#h#	{
+#*#		public static readonly GrammaticalCategory {0} = new GrammaticalCategory({1});
+#f#	}
+#p# GrammaticalCategory, English
+#c#		
+#=#
+
+#name#EnglishGrammaticalCategories - Converter
+#h#	public static partial class EnglishGrammaticalCategories
+#h#	{
+#h#		private static Dictionary<string, GrammaticalCategory> Converter = new Dictionary<string, GrammaticalCategory>();
+#h#		static EnglishGrammaticalCategories()
+#h#		{
+#*#			Converter["{0}"] = {1};
+#f#		}
+#f#	
+#f#		public static GrammaticalCategory Convert(string str)
+#f#		{
+#f#			if (Converter.ContainsKey(str))
+#f#				return Converter[str];
+#f#			else
+#f#				return Unknown;
+#f#		}
+#f#	}
+#p# EnglishConverter, GrammaticalCategory
+#c#			
+#=#
+
+GrammaticalCategory		Common		Russian		RussianConverter	English		EnglishConverter
+
+Unknown					-1			-1			_					-1			-1
+Plural					1			1			мн					1			pl
+Singular				2			2			ед					2			sg
+AllNumbers				Singular | Plural	_	_	_	_
+AllNumbers				_	Singular | Plural	_	_	_
+AllNumbers				_	_	_	Singular | Plural	_
+
+Nominativ				3			3			им					3			nom
+Genitiv					4			4			рд					_			_
+Dativ					5			5			дт					_			_
+Accusativ				6			6			вн					_			_
+Instrumentalis			7			7			тв					_			_
+Vocativ					8			8			пр					_			_
+AllCases				Nominativ | Genitiv | Dativ | Accusativ | Instrumentalis | Vocativ	_	_	_	_
+AllCases				_	Nominativ | Genitiv | Dativ | Accusativ | Instrumentalis | Vocativ	_	_	_
+
+Masculinum				9			9			мр					9			m
+Feminum					10			10			жр					10			f
+Neutrum					11			11			ср					_			_
+MascFem					12			12			мр-жр				_			_
+AllGenders				Masculinum | Feminum | Neutrum		_	_	_	_
+AllGenders				_	Masculinum | Feminum | Neutrum		_	_	_
+
+ShortForm				13			13			кр					_			_
+
+PresentTense			14			14			нст					_			_
+FutureTense				15			15			буд					_			_
+PastTense				16			16			прш					_			_
+AllTimes				PresentTense | FutureTense | PastTense	_	_	_	_
+AllTimes				_	PresentTense | FutureTense | PastTense	_	_	_
+
+FirstPerson				17			17			1л					17			1
+SecondPerson			18			18			2л					18			2
+ThirdPerson				19			19			3л					19			3
+AllPersons				FirstPerson | SecondPerson | ThirdPerson	_	_	_	_
+AllPersons				_	FirstPerson | SecondPerson | ThirdPerson	_	_	_
+AllPersons				_	_	_	FirstPerson | SecondPerson | ThirdPerson	_
+
+Imperative				20			20			пвл					_			_
+
+Animative				21			21			од					21			anim
+NonAnimative			22			22			но					_			_
+AllAnimative			Animative | NonAnimative	_	_	_	_
+AllAnimative			_	Animative | NonAnimative	_	_	_
+
+Comparative				23			23			сравн				23			comp
+
+Perfective				24			24			св					24			perf
+NonPerfective			25			25			нс					_			_
+
+NonTransitive			26			26			нп					_			_
+Transitive				27			27			пе					_			_
+
+ActiveVoice				28			28			дст					_			_
+PassiveVoice			29			29			стр					_			_
+
+
+Indeclinable			30			30			0					_			_
+Initialism				31			31			аббр				_			_
+
+Patronymic				32			32			отч					_			_
+
+Toponym					33			33			лок					_			_
+Organisation			34			34			орг					34			org
+
+Qualitative				35			35			кач					_			_
+DeFactoSingTantum		36			36			дфст				_			_
+
+Interrogative			37			37			вопр				_			_
+Demonstrative			38			38			указат				_			_
+
+Name					39			39			имя					_			_
+SurName					40			40			фам					_			_
+Impersonal				41			41			безл				_			_
+Slang					42			42			жарг				_			_
+Misprint				43			43			опч					_			_
+Colloquial				44			44			разг				_			_
+Possessive				45			45			притяж				45			poss
+Archaism				46			46			арх					_			_
+
+// для второго родительного и второго предложного
+SecondCase				47			47			2					_			_
+Poetry					48			48			поэт				_			_
+Profession				49			49			проф				_			_
+
+//From English
+ObjectCase				50			_			_					50			obj
+Narrative				51			_			_					51			narr
+Geographics				52			_			_					52			geo
+
+
+
+Proper					53			_			_					53			prop
+PersonalPronoun			54			_			_					54			pers
+Predicative				55			_			_					55			pred
+Uncountable				56			_			_					56			uncount
+ReflexivePronoun		57			_			_					57			ref
+DemonstrativePronoun	58			_			_					58			dem
+Mass					59			_			_					59			mass
+Supremum				60			_			_					60			sup
+PresentIndef			61			_			_					61			prsa
+Infinitive				62			_			_					62			inf
+PastIndef				63			_			_					63			pasa
+PastParticiple			64			_			_					64			pp
+Gerund					65			_			_					65			ing
+Futurum					66			_			_					66			fut
+Conditional				67			_			_					67			if
+
+ApostropheS				68			_			_					68			plsq
+Apostrophe				69			_			_					69			plsgs
+Names					70			_			_					70			name

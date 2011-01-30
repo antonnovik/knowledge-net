@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="Russian, English">
+	<Template Priority="10001" Pattern="#E.INT #W.Month #E.INT">
+		<Handler Name="Replace" From="0" Count="3" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="day=0, month=1, year=2" />
+		</Handler>
+	</Template>
+	<Template Priority="10002" Pattern="#E.INT #W.Month">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="day=0, month=1" />
+		</Handler>
+	</Template>
+	<Template Priority="10003" Pattern="#W.Month">
+		<Handler Name="Replace" From="0" Count="1" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="month=0" />
+		</Handler>
+	</Template>
+</Templates>

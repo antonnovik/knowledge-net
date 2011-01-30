@@ -1,0 +1,17 @@
+(deffunction value-cardinality
+ (= (value-cardinality ?instance ?binary-relation)
+    (cardinality (setofall ?y (holds ?binary-relation ?instance ?y))))
+ (function value-cardinality) (arity value-cardinality 3)
+ (nth-domain value-cardinality 2 binary-relation)
+ (nth-domain value-cardinality 3 nonnegative-integer))
+
+(documentation value-cardinality
+               "The VALUE-CARDINALITY of a binary-relation with respect to a given
+domain instance is the number of range-elements to which the relation
+maps the domain-element.  For a function (single-valued relation), the
+VALUE-CARDINALITY is 1 on all domain instances for which the function
+is defined.  It is 0 for those instances outside the exact domain of
+the function.
+  VALUE-CARDINALITY may be used within the definition of a class to
+specify a slot cardinality if its first argument is the class's
+instance variable.")

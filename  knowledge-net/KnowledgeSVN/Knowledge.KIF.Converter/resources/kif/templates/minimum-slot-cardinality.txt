@@ -1,0 +1,17 @@
+(defrelation minimum-slot-cardinality (?domain-class ?relation ?n) :=
+ (=> (instance-of ?instance ?domain-class)
+  (>= (value-cardinality ?instance ?relation) ?n))
+ :axiom
+ (and (relation minimum-slot-cardinality) (arity minimum-slot-cardinality 3)))
+
+(nth-domain minimum-slot-cardinality 1 class)
+
+(nth-domain minimum-slot-cardinality 2 binary-relation)
+
+(nth-domain minimum-slot-cardinality 3 nonnegative-integer)
+
+(documentation minimum-slot-cardinality
+               "MINIMUM-VALUE-CARDINALITY specifies a lower bound on the number
+of range elements to which a given relation can map instance of a
+given domain class.  In other words, it is the minimum number of slot
+values for a slot local to a class.")

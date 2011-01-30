@@ -1,0 +1,15 @@
+(defrelation class-partition (?set-of-classes) :=
+ (and (set ?set-of-classes)
+      (forall (?c) (=> (member ?c ?set-of-classes) (class ?c)))
+      (forall (?c1 ?c2)
+       (=>
+        (and (member ?c1 ?set-of-classes)
+             (member ?c2 ?set-of-classes)
+             (not (= ?c1 ?c2)))
+        (forall (?i) (=> (instance-of ?i ?c1) (not (instance-of ?i ?c2)))))))
+ :axiom (and (subclass-of class-partition set) (class class-partition)))
+
+(documentation class-partition
+               "A set of mutually disjoint classes.  Disjointness of
+classes is a special case of disjointness of sets.")
+

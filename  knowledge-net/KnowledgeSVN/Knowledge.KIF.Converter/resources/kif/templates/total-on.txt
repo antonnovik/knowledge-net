@@ -1,0 +1,10 @@
+(defrelation total-on (?relation ?domain-relation) :=
+ (subrelation-of (exact-domain ?relation) ?domain-relation) :axiom
+ (and (relation total-on) (arity total-on 2)))
+
+(documentation total-on
+               "A relation R is TOTAL-ON a domain class C if there are tuples in the
+relation (x,y) for every instance x of C.  If the domain is a relation D,
+it represents a Cartesian product, and the relation is total on D 
+if for every tuple (x1, x2, ... xn) in D there is a tuple (x1, x2, ... xn, y)
+in R.")

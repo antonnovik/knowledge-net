@@ -1,0 +1,20 @@
+(defrelation slot-value-type (?class ?binary-relation ?type) :=
+ (and (class ?class)
+      (binary-relation ?binary-relation)
+      (class ?type)
+      (forall (?instance)
+       (=> (instance-of ?instance ?class)
+        (=> (holds ?binary-relation ?instance ?slot-value)
+         (instance-of ?slot-value ?type)))))
+ :axiom
+ (and (nth-domain slot-value-type 1 class)
+      (nth-domain slot-value-type 2 binary-relation)
+      (nth-domain slot-value-type 3 class)
+      (relation slot-value-type)
+      (arity slot-value-type 3)))
+
+(documentation slot-value-type
+               "The SLOT-VALUE-TYPE of a relation R with respect to a domain
+class C is a constraint on the values of R when R is applied to
+instances of C.  The constraint is specified as a class T such that
+for any instance c of C, when R(c,t), t is an instance of T.")

@@ -1,0 +1,18 @@
+(defrelation single-valued-slot (?class ?binary-relation) :=
+ (= (slot-cardinality ?class ?binary-relation) 1) :axiom
+ (and (relation single-valued-slot) (arity single-valued-slot 2)))
+
+(<=> (single-valued-slot ?class ?binary-relation)
+ (and (class ?class)
+      (binary-relation ?binary-relation)
+      (=> (instance-of ?instance ?class)
+       (=> (holds ?binary-relation ?instance ?slot-value1)
+        (holds ?binary-relation ?instance ?slot-value2)
+        (= ?slot-value1 ?slot-value2)))))
+
+(documentation single-valued-slot
+               "SINGLE-VALUED-SLOT is a constraint on the second argument of a binary
+relation that is conditional on the first argument to the relation being
+an instance of a given class.  It is like single-valued, except it
+is local to the values of the relation on instances of the given subset
+of the domain.")

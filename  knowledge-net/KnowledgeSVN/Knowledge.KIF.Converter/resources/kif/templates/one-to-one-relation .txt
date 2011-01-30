@@ -1,0 +1,7 @@
+(defrelation one-to-one-relation (?r) :=
+ (and (unary-function ?r)
+      (value-type ?r inverse function)
+      (value-cardinality ?r inverse 1))
+ :axiom
+ (and (subclass-of one-to-one-relation unary-function)
+      (class one-to-one-relation)))

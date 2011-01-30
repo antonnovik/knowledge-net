@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Knowledge.Prospector.UIEnvironment" GeneratedClassName="UISettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OutputOntologyProviderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Knowledge.Net</Value>
+    </Setting>
+    <Setting Name="DocumentsProviderSettings" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OutputOntologySettings" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$data\Results\KnowledgeNetOntology.txt</Value>
+    </Setting>
+    <Setting Name="LoadFromDumpFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$data\Results\Dump.bin</Value>
+    </Setting>
+    <Setting Name="SaveToDumpFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$data\Results\Dump.bin</Value>
+    </Setting>
+    <Setting Name="DocumentsProviderProviderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">One Document</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

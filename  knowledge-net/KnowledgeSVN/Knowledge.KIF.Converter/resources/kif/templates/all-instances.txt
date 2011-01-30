@@ -1,0 +1,20 @@
+(deffunction all-instances
+ (<=> (all-instances ?class ?set-of-instances)
+  (and (class ?class)
+       (set ?set-of-instances)
+       (forall (?instance)
+        (<=> (member ?instance ?set-of-instances)
+         (instance-of ?instance ?class)))))
+ (function all-instances) (domain all-instances class)
+ (range all-instances set) (arity all-instances 2))
+
+(documentation all-instances
+               "The instances of some classes may be specified extensionally.  That
+is, one can list all of the instances of the class by definition.  For
+this case we say (= (all-instances C) (setof V_1 V_2 ...  V_n)), where
+C is a class and the V_i are its instances.
+  ALL-INSTANCES imposes a monotonic constraint. Any subclass of C
+cannot have any instances outside of the ALL-INSTANCES of C.
+Note that this is not indexical or modal: whether something is in 
+all-instances is a property of the modeled world and does not depend
+on the facts currently stored in some knowledge base.")

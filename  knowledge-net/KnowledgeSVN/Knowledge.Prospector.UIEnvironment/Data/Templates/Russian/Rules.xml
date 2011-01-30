@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="Russian">
+	<Template Priority="10000" Pattern="#E.P #E.C ,? а? значить #E.P">
+		<Handler Name="PR" Arguments="0, 1" />
+		<Handler Name="PR" Arguments="5, 1" />
+		<Handler Name="NewRule" Arguments="1, 0, 5" />
+	</Template>
+	<Template Priority="10000" Pattern="#E.C #E.P ,? а? значить #E.P">
+		<Handler Name="PR" Arguments="1, 0" />
+		<Handler Name="PR" Arguments="5, 0" />
+		<Handler Name="NewRule" Arguments="0, 1, 5" />
+	</Template>
+	<Template Priority="10000" Pattern="что #E.P #E.C ,? тем? [он она они]? #E.P">
+		<Handler Name="PR" Arguments="1, 2" />
+		<Handler Name="PR" Arguments="6, 2" />
+		<Handler Name="NewRule" Arguments="2, 1, 6" />
+	</Template>
+</Templates>

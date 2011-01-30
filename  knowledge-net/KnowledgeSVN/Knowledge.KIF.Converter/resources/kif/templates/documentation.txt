@@ -1,0 +1,8 @@
+(defrelation documentation (range documentation string)
+ (relation documentation) (arity documentation 2))
+
+(documentation documentation
+               "Documentation is a relation between objects in the domain of discourse 
+and strings of natural language text.  The domain of DOCUMENTATION is
+not constants (names), but the objects themselves.  This means that
+one does not quote the names when associating them with their documentation.")

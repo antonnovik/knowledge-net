@@ -1,0 +1,75 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F7E25C8-CA20-4545-84BF-977A440FE40E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Knowledge.Prospector.IO</RootNamespace>
+    <AssemblyName>Knowledge.Prospector.IO</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Articles\ArticleInfo.cs" />
+    <Compile Include="Articles\IArticle.cs" />
+    <Compile Include="Articles\TextArticle.cs" />
+    <Compile Include="Articles\TextBlock.cs" />
+    <Compile Include="Articles\TextBlockType.cs" />
+    <Compile Include="Documents\DocumentBase.cs" />
+    <Compile Include="Documents\DocumentFactory.cs" />
+    <Compile Include="Documents\DocumentInfo.cs" />
+    <Compile Include="Documents\HTMLDocument.cs" />
+    <Compile Include="Documents\IDocument.cs" />
+    <Compile Include="Documents\Providers\DocumentProviderBase.cs" />
+    <Compile Include="Documents\Providers\IDocumentProvider.cs" />
+    <Compile Include="Documents\Providers\LocalDocumentProvider.cs" />
+    <Compile Include="Documents\Providers\OneTextDocumentProvider.cs" />
+    <Compile Include="Documents\TextDocument.cs" />
+    <Compile Include="IOntology.cs" />
+    <Compile Include="KnowledgeNetOntology.cs" />
+    <Compile Include="OwlOntology.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestOntology.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Knowledge.Prospector.Common\Knowledge.Prospector.Common.csproj">
+      <Project>{5F238122-3562-4395-A6B3-D211FFF7FA2A}</Project>
+      <Name>Knowledge.Prospector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.Data\Knowledge.Prospector.Data.csproj">
+      <Project>{4A963B63-7D0E-4EE5-A474-805FA0C451D0}</Project>
+      <Name>Knowledge.Prospector.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

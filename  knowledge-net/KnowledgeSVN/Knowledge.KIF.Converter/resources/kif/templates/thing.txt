@@ -1,0 +1,16 @@
+(defrelation thing
+ (exhaustive-subclass-partition thing (setof simple-set individual-thing))
+ (alias thing bounded) (class thing))
+
+(documentation thing
+               "THING is the class of everything in the universe of discourse that
+can be in a class.  This includes all the relations and objects
+defined in the KIF specification, plus all other objects defined in
+user ontologies.  Every THING is either a simple-set or an individual.
+  There are entities in the universe of discourse for KIF that cannot
+be instances of THING.  These entities are unbounded objects, which by
+definition cannot be members of any set.  Since THING is a class,
+and classes are relations, and relations are sets, then unbounded
+entities can't be instances of any class.
+  That is why THING is defined here, as the practical root of all
+ontologies.")

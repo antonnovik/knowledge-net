@@ -1,0 +1,303 @@
+<!--------------------------------------------------------------------------->  
+<!--                           INTRODUCTION                                
+
+ The Code Project article submission template (HTML version)
+
+Using this template will help us post your article sooner. To use, just 
+follow the 3 easy steps below:
+ 
+     1. Fill in the article description details
+     2. Add links to your images and downloads
+     3. Include the main article text
+
+That's all there is to it! All formatting will be done by our submission
+scripts and style sheets. 
+
+-->  
+<!--------------------------------------------------------------------------->  
+<!--                        IGNORE THIS SECTION                            -->
+<html>
+<head>
+<title>The Code Project</title>
+<Style>
+BODY, P, TD { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt }
+H2,H3,H4,H5 { color: #ff9900; font-weight: bold; }
+H2 { font-size: 13pt; }
+H3 { font-size: 12pt; }
+H4 { font-size: 10pt; color: black; }
+PRE { BACKGROUND-COLOR: #FBEDBB; FONT-FAMILY: "Courier New", Courier, mono; WHITE-SPACE: pre; }
+CODE { COLOR: #990000; FONT-FAMILY: "Courier New", Courier, mono; }
+</style>
+<link rel="stylesheet" type=text/css href="http://www.codeproject.com/styles/global.css">
+</head>
+<body bgcolor="#FFFFFF" color=#000000>
+<h2>Coco/R for Visual Studio.Net</h2>
+<p>by Pascal GANAYE</p>
+<p><img src="vsCoco.png" alt="Sample Image - maximum width is 600 pixels" width=639 height=453></p>
+
+
+<!-------------------------------     STEP 3      --------------------------->
+<!--  Add the article text. Please use simple formatting (<h2>, <p> etc)   --> 
+
+<h2>Introduction</h2>
+
+<p>I have been publishing one or two article about formula evaluation, and so 
+  far all programs were written manually. For a recent project I need to parse 
+  far more complex grammars and I really needed some help.<br>
+
+<p>I had a look on the internet and I found a project called <a href="http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/">Coco/R</a> 
+  from the Johannes Kepler Universit&auml;t Linz. This is how they discribe their 
+  product : &quot;Coco/R takes a compiler description in the form of an attributed 
+  grammar (EBNF syntax with attributes and semantic actions) and translates it 
+  into a scanner and a recursive descent parser.... Coco/R has been used successfully 
+  in academia and industry. It combines the functionality of the well-known Unix 
+  tools Lex and Yacc&quot;.
+<p>I used Coco for a while and despite being extremely good I found working with 
+  it rapidly frustrating because I had to run it manually and it was not really 
+  well integrated with Visual Studio.
+<h2>Background</h2>
+
+<p>Anyone wanting to use this tool should be familiar with EBNF grammars. There 
+  is several good introduction available on the internet.
+<p>I also particularly recommend the reading of <a href="http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/Doc/UserManual.pdf">the 
+  Compiler Generator Coco/R User Manual</a> 
+<h2>Installing vsCoco</h2>
+<p>You need to download and run the file <code>vsCocoRegistration.exe</code>. The 
+  registration should work fine with Visual Studio 2003. </p>
+<p>If it doesn't work with your version, please post in the forum below. If you 
+  are able to fix the vsCoCoRegistration please 
+  <script language="JavaScript" >// <!-- Encryption www.ganaye.com v1.0
+document.write("<a href=\"mailto:\160asc\x61\x6cc\160\100\147a\x6e\141y\x65\56c\157m?subject=[vsCoco] ...\">write to me</a>"); //-->
+</script>
+  the updated source.</p>
+<h2>Using vsCoco</h2>
+
+<p>To start with you can try to play with the Calculator sample I provided in 
+  the download. 
+<p>The calculator calculates formula like <code>12+34*55/2</code> . 
+<p>The sample contains only 5 lines of csharp code.
+<pre>private void button1_Click(object sender, System.EventArgs e)<br>{<br>		Parser p = new Parser(comboBox1.Text);<br>		p.Parse();<br>		textBox1.AppendText(&quot;&gt;&quot; + comboBox1.Text + &quot;\r\n&quot; <br>				+ p.result.ToString() + &quot;\r\n&quot;);<br>}
+</pre>
+<p>As you can see most of the login must be in the Parser Object.</p>
+<p>The parser is created automatically from this grammar:</p>
+<pre>COMPILER calc
+
+	public double result = 0;
+ 
+IGNORECASE 
+// The $L option let you compile directly within your grammar
+// You can comment and uncomment the line to fit your development requirements.
+$L
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+CHARACTERS
+	digit = "0123456789".
+	cr  = '\r'.
+	lf  = '\n'.  
+	tab = '\t'.
+
+TOKENS
+	number = digit {digit} ['.' {digit}].
+	
+// We don't use comments here but this is only a sample
+COMMENTS FROM "//" TO cr lf 
+
+IGNORE cr + lf + tab 
+
+PRODUCTIONS
+
+
+/*------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------*/
+OPERAND<out double val>		
+=							(.  val = 0; .)
+  (
+  number 					(.	val = Double.Parse(t.val,
+									System.Globalization.NumberStyles.Float, 
+									System.Globalization.CultureInfo.InvariantCulture); 
+							.)
+  | "(" EXPR<out val> ")"	
+  ).
+ 
+// Priorities in FGL 
+//
+//   	()		(Parenthesis)
+// 10	-		(Unary neg)
+// 09	* /		(Multiply and Divide)
+// 07	+ -		(Add and Substract)
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+EXPR10<out double val>
+=                       (.	bool neg=false; .) 
+	{					
+		( '-'			(.	neg=!neg; .)
+		| '+'			(.	/*nothing to do*/ .)
+		)
+	}
+	OPERAND<out val>	(.	if (neg) val*=-1; .)
+	.
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+EXPR09<out double val>	
+= 
+	EXPR10<out val>		
+	{						(.	double val2; .)
+		( '*' 
+		EXPR10<out val2>	(.	val*=val2; .)
+		| '/' 
+		EXPR10<out val2>	(.	val/=val2; .)
+		)
+	}						
+	.
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+EXPR<out double val>	
+= 
+	EXPR09<out val>
+	{						(.	double val2; .)			
+		( '+'				
+		EXPR09<out val2>	(.	val+=val2; .)				
+		| '-'				
+		EXPR09<out val2>	(.	val-=val2; .)				
+		)
+	}						 
+	.
+  
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+calc
+=					
+	EXPR<out result>.
+
+END calc.
+
+</pre>
+<p>This grammar is fairly standard one. </p>
+<p>If I try to read it in English it would say:</p>
+<ul>
+  <li>This grammar will produce a parser called calc.</li>
+  <li>Calc parser return expressions</li>
+  <li>An expression can be a sum or if not a product of signed numbers.</li>
+  <li>The multiplication should be done before the additions however the minus 
+    and plus sign have more priority if they are signs.</li>
+</ul>
+<p>As you can see there is more complexity than it looks.</p>
+<p>This is a bit hard for me to describe what this grammar does and how it works 
+  and this is not my goal.</p>
+<p>What I would like to share with you is this tool and hopefully raise an interest 
+  for Compiler's compilers if you are new in this subject.</p>
+<h2>How does it work ?</h2>
+<h2>Coco Modifications - 1 : the #line</h2>
+<p>I made several major modifications to Coco/R</p>
+<p>First I wanted to trace within the grammar.</p>
+<p>This was the easy part, I modified Coco source file and added the $L option.</p>
+<p>If you insert $L in the beginning of your grammar, Coco compiler wil add many 
+  #line in your code.</p>
+<p>For example:</p>
+<pre>
+COMPILER calc
+
+	public double result = 0;
+ 
+IGNORECASE 
+// The $L option let you compile directly within your grammar
+// You can comment and uncomment the line to fit your development requirements.
+$L
+</pre>
+...
+<pre>
+OPERAND<out double val>		
+=							(.  val = 0; .)
+  (
+  number 					(.	val = Double.Parse(t.val,
+									System.Globalization.NumberStyles.Float, 
+									System.Globalization.CultureInfo.InvariantCulture); 
+							.)
+  | "(" EXPR<out val> ")"	
+  ).
+</pre>
+<p>Will generate:</p>
+<pre>	void OPERAND(
+#line 31 "C:\dotnet\vsCoco\Calculator\Calc.atg"
+        out double val
+#line hidden
+) {
+
+#line 32 "C:\dotnet\vsCoco\Calculator\Calc.atg"
+            val = 0; 
+#line hidden
+
+		if (la.kind == 1) {
+			Get();
+
+#line 34 "C:\dotnet\vsCoco\Calculator\Calc.atg"
+                 val = Double.Parse(t.val,
+									System.Globalization.NumberStyles.Float, 
+									System.Globalization.CultureInfo.InvariantCulture); 
+							
+#line hidden
+
+		} else if (la.kind == 2) {
+			Get();
+			EXPR(
+#line 38 "C:\dotnet\vsCoco\Calculator\Calc.atg"
+             out val
+#line hidden
+);
+			Expect(3);
+		} else SynErr(9);
+	}
+</pre>
+<p>This <code>#line</code> are very helpful, the Visual Studio IDE understand 
+  it well and let you debug your generated program using the original source grammar.</p>
+<p>I find it very useful; you can comment and uncomment the $L line to fit your 
+  development requirements .</p>
+<h2>Coco Modifications - 2 : A real Visual Studio Custom tool</h2>
+<p>My second goal was to run Coco directly from Visual Studio as a custom tool, 
+  rather than having to use batch files.</p>
+<p>The main advantage of a custom tool is that it will be automatically called 
+  when the source grammar changes and not at each compile.</p>
+<p>Visual studio publishes an interface called <code>IVsSingleFileGenerator</code>.</p>
+<p>This interface defines two methods: </p>
+<ul>
+  <li><code>int DefaultExtension(out string)</code></li>
+  <li><code>int Generate(string, string, string, System.IntPtr[], out uint, Microsoft.VisualStudio.Shell.Interop.IVsGeneratorProgress)</code></li>
+</ul>
+<p>Providing this two interface is the base of the work needed to make a visual 
+  Studio Custom tool.</p>
+<h3>Coco Modifications - 3 : An installer for the Visual Studio Custom tool</h3>
+<p>With the good information, this is after all fairly straight forward. I used 
+  and modified the GotDotNet User Sample: <a href="http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=4AA14341-24D5-45AB-AB18-B72351D0371C">BaseCodeGeneratorWithSite</a>.</p>
+<p>Now that we have a dll which can be a Visual Studio plugin, you need to register 
+  it. This could prove a lot harder than expected. Fortunately I read a excellent 
+  article called <a href="http://www.codeproject.com/dotnet/Custom_Tool_Registration.asp">Automated 
+  Registration of Visual Studio Custom Tools</a> by <a href="http://www.codeproject.com/script/profile/whos_who.asp?id=1113856">Michael 
+  McKechney</a>.</p>
+<p>I butchered his sample program and produced vsCocoRegistration.exe.</p>
+<h2>Known bugs</h2>
+
+<p>vsCocoRegistration does not yet works with all version of Visual Studio.net. 
+  This is just a question of changing the Registry GUIDs but I don't have that 
+  many version to test it with. So feel free to ask in the forum below.
+<h2>Links</h2>
+
+<p><a href="http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/">The Compiler 
+  Generator Coco/R</a> by Hanspeter M&ouml;ssenb&ouml;ck, Albrecht W&ouml;&szlig;, 
+  Markus L&ouml;berbauer, University of Linz </p>
+<p><a href="http://en.wikipedia.org/wiki/LL_parser">LL parser</a>  From Wikipedia, 
+  the free encyclopedia.</p>
+<p>GotDotNet User Sample: <a href="http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=4AA14341-24D5-45AB-AB18-B72351D0371C">BaseCodeGeneratorWithSite</a> 
+</p>
+<p><a href="http://www.codeproject.com/dotnet/Custom_Tool_Registration.asp">Automated 
+  Registration of Visual Studio Custom Tools</a> article from by <a href="http://www.codeproject.com/script/profile/whos_who.asp?id=1113856">Michael 
+  McKechney</a>. </p>
+<h2>History</h2>
+
+<p>October 29th 2005 - First release. 
+  <!-------------------------------    That's it!   --------------------------->
+</body>
+</html>

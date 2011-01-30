@@ -1,0 +1,134 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AD1C87F-11F5-49BD-B632-0F32D362C147}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Knowledge.Prospector</RootNamespace>
+    <AssemblyName>Knowledge.Prospector</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <FxCopRules>
+    </FxCopRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dictionaries\DictionaryManagerConfigurationSectionHandler.cs" />
+    <Compile Include="Dictionaries\MrdDictionaryAdapterOptions.cs" />
+    <Compile Include="Templates\ClauseHolder.cs" />
+    <Compile Include="Templates\ClauseHolderManager.cs" />
+    <Compile Include="Templates\EntityExpressions\AndValidatorExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\ClauseHolderEntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\EntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\EntityExpressionParser.cs" />
+    <Compile Include="Templates\EntityExpressions\EntityRegex.cs" />
+    <Compile Include="Templates\EntityExpressions\EntityRegexMatchInfo.cs" />
+    <Compile Include="Templates\EntityExpressions\EntityRegexMatchState.cs" />
+    <Compile Include="Templates\EntityExpressions\MultipleEntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\NotValidatorExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\OneEntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\OptionalEntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\OrValidatorExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\PositiveEntityExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\StateItem.cs" />
+    <Compile Include="Templates\EntityExpressions\ValidatorExpression.cs" />
+    <Compile Include="Templates\EntityExpressions\ValidatorExpressionParser.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\BaseValidator.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\OriginalWordValidator.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\OriginalWordValidatorFactory.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\PartOfSpeechValidator.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\PartOfSpeechValidatorFactory.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\TypeValidator.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\TypeValidatorFactory.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\ValidatorFactory.cs" />
+    <Compile Include="Templates\EntityExpressions\Validators\ValidatorManager.cs" />
+    <Compile Include="EntityManager.cs" />
+    <Compile Include="Languages\DefaultLanguage.cs" />
+    <Compile Include="Languages\English.cs" />
+    <Compile Include="Languages\Language.cs" />
+    <Compile Include="Templates\EntityExpressions\WordHolderEntityExpression.cs" />
+    <Compile Include="Templates\EntityTemplate.cs" />
+    <Compile Include="Templates\EntityTemplateManager.cs" />
+    <Compile Include="Templates\Handlers\Common\AddHandler.cs" />
+    <Compile Include="Templates\Handlers\BaseHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreatePropertyAndPropertyRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreateClassToClassRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreatePropertyRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreateRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreateSubclassRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\CreateSubpropertyRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\Common\ICommonHandler.cs" />
+    <Compile Include="Templates\Handlers\Common\ReplaceHandler.cs" />
+    <Compile Include="Templates\Handlers\Common\CreateConditionalRuleHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateEntity\CreateDateTimeEntityHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateEntity\CreateEntityHandler.cs" />
+    <Compile Include="Templates\Handlers\CreateEntity\CreateEntityHandlerManager.cs" />
+    <Compile Include="Templates\Handlers\CreateEntity\ICreateEntityHandler.cs" />
+    <Compile Include="Dictionaries\DictionaryManager.cs" />
+    <Compile Include="Dictionaries\DictionaryManagerOptions.cs" />
+    <Compile Include="Dictionaries\IDictionary.cs" />
+    <Compile Include="Dictionaries\MrdDictionaryAdapter.cs" />
+    <Compile Include="Dictionaries\RussianXmlDictionary.cs" />
+    <Compile Include="Dictionaries\XmlDictionary.cs" />
+    <Compile Include="Languages\LanguageManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Languages\ILanguage.cs" />
+    <Compile Include="IProspector.cs" />
+    <Compile Include="Languages\Russian.cs" />
+    <Compile Include="Templates\Handlers\CreateRelationship\ICreateRelationshipHandler.cs" />
+    <Compile Include="Templates\Handlers\BaseHandlerManager.cs" />
+    <Compile Include="Templates\Handlers\IBaseHandler.cs" />
+    <Compile Include="Templates\Handlers\Shortcut.cs" />
+    <Compile Include="Templates\Handlers\ShortcutManager.cs" />
+    <Compile Include="Templates\WordHolder.cs" />
+    <Compile Include="Templates\WordHolderManager.cs" />
+    <Compile Include="TextProspector.cs" />
+    <Compile Include="ProspectorManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Knowledge.Prospector.Common\Knowledge.Prospector.Common.csproj">
+      <Project>{5F238122-3562-4395-A6B3-D211FFF7FA2A}</Project>
+      <Name>Knowledge.Prospector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.Data\Knowledge.Prospector.Data.csproj">
+      <Project>{4A963B63-7D0E-4EE5-A474-805FA0C451D0}</Project>
+      <Name>Knowledge.Prospector.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.IO\Knowledge.Prospector.IO.csproj">
+      <Project>{9F7E25C8-CA20-4545-84BF-977A440FE40E}</Project>
+      <Name>Knowledge.Prospector.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.Morphology\Knowledge.Prospector.Morphology.csproj">
+      <Project>{9E2FDA7E-0BF3-42ED-8BB2-EA241AEB69DA}</Project>
+      <Name>Knowledge.Prospector.Morphology</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

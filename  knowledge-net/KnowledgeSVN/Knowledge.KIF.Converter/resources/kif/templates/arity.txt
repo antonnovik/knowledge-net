@@ -1,0 +1,18 @@
+(deffunction arity
+ (<=> (arity ?relation ?n)
+  (and (relation ?relation)
+       (not (empty ?relation))
+       (integer ?n)
+       (forall (?tuple)
+        (=> (member ?tuple ?relation) (= (length ?tuple) ?n)))))
+ (function arity) (domain arity relation) (range arity integer) (arity arity 2))
+
+(documentation arity
+               "Arity is the number of arguments that a relation can take.  If a
+relation can take an arbitrary number of arguments, its arity is
+undefined.  For example, a function such as `+' is of undefined arity;
+its last formal argument is specified with a sequence variable.  The
+arity of a function is one more than the number of arguments it can
+take, in keeping with the unified treatment of functions and
+relations.  The arity of the empty relation (i.e., with no tuples) is
+undefined.")

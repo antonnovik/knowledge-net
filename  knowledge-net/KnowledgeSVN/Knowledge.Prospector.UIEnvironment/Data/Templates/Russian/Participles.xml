@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="Russian">
+	<!--Begin Shortcut file -->
+	<Shortcut Name="PropAndRelation" Class="Knowledge.Prospector.Templates.Handlers.CreateRelationship.CreatePropertyAndPropertyRelationshipHandler, Knowledge.Prospector" />
+	<!--End Shortcut file-->
+
+	<!--Begin Templates file-->
+	<Template Priority="100000" Pattern="#E.C быть? #M.Participle в #E.DateTime">
+		<Handler Name="PropAndRelation" Arguments="2, 0, DateTime" />
+	</Template>
+	<!--End Templates file-->
+
+</Templates>

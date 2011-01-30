@@ -1,0 +1,19 @@
+(defrelation same-slot-values (?class ?slot1 ?slot2) :=
+ (and (class ?class)
+      (binary-relation ?slot1)
+      (binary-relation ?slot2)
+      (forall (?instance ?value)
+       (=> (instance-of ?instance ?class)
+        (<=> (holds ?slot1 ?instance ?value)
+         (holds ?slot2 ?instance ?value)))))
+ :axiom
+ (and (nth-domain same-slot-values 1 class)
+      (nth-domain same-slot-values 2 binary-relation)
+      (nth-domain same-slot-values 3 binary-relation)
+      (relation same-slot-values)
+      (arity same-slot-values 3)))
+
+(documentation same-slot-values
+               "Let class C be in the domain of two binary relations R_1 and R_2.
+The relation (same-values C R_1 R_2) means that the values of the
+two relations are the same when applied to instances of the class.")

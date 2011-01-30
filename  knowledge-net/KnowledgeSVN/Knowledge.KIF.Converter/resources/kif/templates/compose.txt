@@ -1,0 +1,14 @@
+(deffunction compose
+ (<=> (= (compose @binary-relations) ?composed-relation)
+  (composition-of ?composed-relation (listof @binary-relations)))
+ (=> (= (compose @binary-relations) ?composed-relation)
+  (forall (?r) (=> (item ?r (listof @binary-relations)) (binary-relation ?r))))
+ (function compose) (undefined (arity compose)) (range compose binary-relation))
+
+(documentation compose
+               "arbitrary-arity version of COMPOSITION.  The left-to-right
+argument order composes relations outside-in.  
+e.g., (COMPOSE f g h) means (composition h (composition g f)).
+If the relations are unary functions, then the composition order
+corresponds to nested function terms.  For example, if f,g,h are functions,
+then (value (COMPOSE f g h) ?arg) is equivalent to (f (g (h ?arg))).")

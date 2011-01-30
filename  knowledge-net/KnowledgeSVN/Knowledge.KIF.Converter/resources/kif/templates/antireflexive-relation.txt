@@ -1,0 +1,7 @@
+(defrelation antireflexive-relation (?r) :=
+ (and (binary-relation ?r) (not (holds ?r ?x ?x))) :axiom
+ (and (subclass-of antireflexive-relation binary-relation)
+      (class antireflexive-relation)))
+
+(documentation antireflexive-relation
+               "Relation R is antireflexive if R(a,a) never holds.")

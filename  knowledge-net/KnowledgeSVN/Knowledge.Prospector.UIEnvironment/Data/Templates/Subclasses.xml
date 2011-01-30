@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English, Russian">
+	<Template Priority="4" Pattern="#E.C -? #W.Subclass #E.C">
+		<Handler Name="SR" Arguments="0, 3" />
+	</Template>
+</Templates>

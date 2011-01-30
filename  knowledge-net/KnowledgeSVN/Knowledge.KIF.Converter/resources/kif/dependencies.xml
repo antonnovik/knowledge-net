@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dependencies>
+	<default>
+		<item name="document"/>
+	</default>
+	<item name="define-class">
+		<dependency>xz1</dependency>
+		<dependency>xz2</dependency>
+		<dependency>xz3</dependency>
+	</item>
+	<item name="define-relation">
+		<dependency>xz2</dependency>
+		<dependency>xzxx1</dependency>
+	</item>
+	<item name="define-instance">
+		<dependency>xz2</dependency>
+		<dependency>xzxx1</dependency>
+	</item>
+</dependencies>
+

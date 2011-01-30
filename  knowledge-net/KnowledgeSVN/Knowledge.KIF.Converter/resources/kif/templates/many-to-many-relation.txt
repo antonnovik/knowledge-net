@@ -1,0 +1,6 @@
+(defrelation many-to-many-relation (?r) :=
+ (and (binary-relation ?r) (not (function ?r)) (not (function (inverse ?r))))
+ :axiom
+ (and (subclass-of many-to-many-relation binary-relation)
+      (class many-to-many-relation)))
+

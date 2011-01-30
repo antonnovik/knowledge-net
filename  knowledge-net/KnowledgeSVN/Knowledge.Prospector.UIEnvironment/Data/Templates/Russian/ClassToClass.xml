@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English, Russian">
+	<Template Priority="1000000" Pattern="#E.C расположить в #H.Class">
+		<Handler Name="CreateClassToClassRelationship" Arguments="1, 0, 3, Transitive" />
+	</Template>
+
+	<Template Priority="1000000" Pattern="#E.C меньше чем? #E.C">
+		<Handler Name="CreateClassToClassRelationship" Arguments="1, 0, 3, Transitive" />
+	</Template>
+
+	<Template Priority="1000000" Pattern="#E.C больше чем? #E.C">
+		<Handler Name="CreateClassToClassRelationship" Arguments="1, 0, 3, Transitive" />
+	</Template>
+</Templates>

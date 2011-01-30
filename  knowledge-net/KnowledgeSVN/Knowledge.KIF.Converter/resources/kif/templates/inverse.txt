@@ -1,0 +1,12 @@
+(deffunction inverse
+ (= (inverse ?binary-relation)
+    (if (binary-relation ?binary-relation)
+        (setofall (listof ?y ?x) (holds ?binary-relation ?x ?y))))
+ (function inverse)
+ (<=> (holds ?binary-relation ?x ?y) (holds (inverse ?binary-relation) ?y ?x))
+ (arity inverse 2) (domain inverse binary-relation)
+ (range inverse binary-relation))
+
+(documentation inverse
+               "One binary relation is the inverse of another if they are
+equivalent when their arguments are swapped.")

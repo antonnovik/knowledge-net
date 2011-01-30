@@ -1,0 +1,13 @@
+(defrelation single-valued (?relation) :=
+ (and (binary-relation ?relation) (function ?relation)) :axiom
+ (and (subclass-of single-valued binary-relation)
+      (subclass-of single-valued function)
+      (class single-valued)))
+
+(documentation single-valued
+               "Single-valued relations are binary relations that are functional.
+The predicate SINGLE-VALUED is useful for asserting that a slot will
+have at most one value without using a function-defining form.  It is
+restricted to binary relations because it is defined only for slots.
+Note that specifying a relation as single valued says that it is
+function for _all_ subclasses of its domain.")

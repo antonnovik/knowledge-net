@@ -1,0 +1,15 @@
+(defrelation maximum-value-cardinality (?instance ?binary-relation ?n) :=
+ (and (binary-relation ?binary-relation)
+      (nonnegative-integer ?n)
+      (=< (value-cardinality ?instance ?binary-relation) ?n))
+ :axiom
+ (and (nth-domain maximum-value-cardinality 2 binary-relation)
+      (nth-domain maximum-value-cardinality 3 nonnegative-integer)
+      (relation maximum-value-cardinality)
+      (arity maximum-value-cardinality 3)))
+
+(documentation maximum-value-cardinality
+               "Maximum value cardinality is a constraint on the number of values to
+which a binary relation can map a domain instance.  It restrict the relation
+to AT MOST N values for a given a domain instance.  A cardinality of 0 
+means that the relation does not hold for that instance.")

@@ -1,0 +1,18 @@
+(defrelation nth-domain (?relation ?n ?type) :=
+ (and (defined (arity ?relation))
+      (positive-integer ?n)
+      (class ?type)
+      (forall (?tuple)
+       (=> (member ?tuple ?relation)
+        (and (>= (length ?tuple) ?n) (instance-of (nth ?tuple ?n) ?type)))))
+ :axiom
+ (and (nth-domain nth-domain 2 positive-integer)
+      (nth-domain nth-domain 3 class)
+      (relation nth-domain)
+      (arity nth-domain 3)))
+
+(documentation nth-domain
+               "Domain restrictions generalized to n-ary relations.
+The sentence (nth-domain rel 3 type-class) says that
+the 3rd element of each tuple in the relation REL is
+an instance of type-class.")

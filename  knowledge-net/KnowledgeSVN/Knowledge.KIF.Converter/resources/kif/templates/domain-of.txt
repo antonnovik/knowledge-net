@@ -1,0 +1,29 @@
+(defrelation domain-of (inverse domain-of domain) (relation domain-of)
+ (arity domain-of 2))
+
+(documentation domain-of
+               "DOMAIN-OF is the inverse of the DOMAIN relation;
+i.e., (domain-of D R) means that D is a domain restriction of R.  
+A DOMAIN-OF a binary relation is a class to which the binary relation
+can be meaningfully applied; i.e., it is possible, but not assured,
+that there are instances d of D for which R(d,v) holds.  Of course,
+every instance i for which R(i,v) does hold is an instance of D.
+  One interpretation of the assertion (DOMAIN-OF my-class my-relation)
+is `the slot my-relation may apply to some of the instances of
+my-class.' A less precise but common paraphrase is `my-class _has_ the
+slot my-relation'.  User interfaces to frame and object systems often
+have some symbol-level heuristic for showing slots that `have' or `make
+sense for' the class.  Keep in mind that DOMAIN-OF is a constraint on
+the logically consistent use of the relation, not a relevance
+assertion.  There are many classes that are DOMAINs-OF a given
+relation; namely, all superclasses of the exact-domain.  (THING, for
+example, is a DOMAIN-OF all relations.) Therefore, it is quite possible
+that most of the instances of a domain-of a relation do not `make
+sense' for that relation.
+  Whereever one uses (domain-of D R) it is equivalent to adding D to
+the list of domain restrictions on the definition of R.  In other words
+if R was defined as (define-relation R (?x ?y) :def (and (A ?x) (B ?y)))
+then the statement (DOMAIN-OF D R) has the same meaning as changing the
+definition to (define-relation R (?x ?y) :def (and (A ?x) (D ?x) (B ?y))).
+For modularity reasons DOMAIN-OF is preferred only when R is not given its 
+own definition in an ontology.")

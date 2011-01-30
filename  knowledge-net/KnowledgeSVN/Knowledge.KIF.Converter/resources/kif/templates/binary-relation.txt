@@ -1,0 +1,12 @@
+(defrelation binary-relation (?relation) :=
+ (and (relation ?relation)
+      (not (empty ?relation))
+      (forall (?tuple) (=> (member ?tuple ?relation) (double ?tuple))))
+ :axiom (and (subclass-of binary-relation relation) (class binary-relation)))
+
+(=> (binary-relation ?relation) (= (arity ?relation) 2))
+
+(documentation binary-relation
+               "A binary relation maps instances of a class to 
+instances of another class.  Its arity is 2.
+Binary relations are often shown as slots in frame systems.")

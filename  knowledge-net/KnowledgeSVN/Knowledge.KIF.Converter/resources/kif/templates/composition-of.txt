@@ -1,0 +1,33 @@
+(defrelation composition-of (?binary-relation ?list-of-relations) :=
+ (and (binary-relation ?binary-relation)
+      (list ?list-of-relations)
+      (not (null ?list-of-relations))
+      (=> (item ?r ?list-of-relations) (binary-relation ?r))
+      (or (and (single ?list-of-relations)
+               (= ?binary-relation (first ?list-of-relations)))
+          (and (double ?list-of-relations)
+               (= ?binary-relation
+                  (composition (first (rest ?list-of-relations))
+                   (first ?list-of-relations))))
+          (exists (?left-sub-relation)
+           (and (= ?binary-relation
+                   (composition (last ?list-of-relations) ?left-sub-relation))
+                (composition-of ?left-sub-relation
+                 (butlast ?list-of-relations))))))
+ :axiom
+ (and (domain composition-of binary-relation)
+      (range composition-of list)
+      (relation composition-of)
+      (arity composition-of 2)))
+
+(documentation composition-of
+               "A binary relation R is a COMPOSITION-OF a sequence of binary relations 
+R_1, R_2, ... R_N iff there exists a relation R' that is a COMPOSITION-OF
+the sequence R_1 ... R_{N-1}, and R is the (COMPOSITION R_1 R').
+  Relations are composed right to left.  For example,
+if (composition-of R (listof a b c d))
+then R = (composition d (composition c (composition b a))).
+  When the relations are unary functions, the sequence corresponds to
+nested parentheses in functional notation.  For example, if F is
+composition-of functions a, b, and c, (COMPOSITION-OF F (listof a b c))
+means (f ?x) is equal to (a (b (c ?x))).")

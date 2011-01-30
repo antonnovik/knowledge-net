@@ -1,0 +1,190 @@
+GOAL:   kach
+
+P_INT:[var
+reas,vlagn,sodg,zerns,kach,odnor,
+polos,vspen,nalser,osv:integer;]; 
+
+P_INI:[begin
+reas:=0;
+kach:=0;
+odnor:=0;
+polos:=0;
+vspen:=0;
+nalser:=0;
+osv:=0;
+end;];
+
+P_USES:[Windows,cp_ie,cp_trs;];
+
+DO: P:[if esSetReasonMode=1 then CMPR;]
+
+VAR:    sodg
+LABEL:  содержание газов
+TYPE: INT
+VAR:    osv
+LABEL:  осветление стекла
+TYPE: INT
+VAR:    vspen
+LABEL:  вспенивание
+TYPE: INT
+VAR:    vlagn
+LABEL:  влажность шихты
+TYPE: INT
+VAR:    odnor
+LABEL:  однородн. шихты
+TYPE: INT
+VAR:    zerns
+LABEL:  зернов. состав
+TYPE: INT
+VAR:    polos
+LABEL:  полосность
+TYPE: INT
+VAR:    nalser
+LABEL:  наличие зерен
+TYPE: INT
+VAR:    kach
+LABEL:  качество
+TYPE: INT
+
+INITIAL: vlagn=P:[vlagn;];
+         sodg=P:[sodg;];
+         zerns=P:[zerns;];
+
+RULE:   R1
+        IF:     osv=3 & polos=1 & nalser=0
+        THEN:   kach=1; P:[kach]=kach;
+        REASON: Хорошее осветление, отсутствие полосности и кварцевых
+                зерен в стекле говорит о его хорошем качестве.
+
+RULE:   R2
+        IF:     nalser=1
+        THEN:   kach=2; P:[kach]=kach;
+        REASON: Наличие кварцевых зерен указывает на некачественность
+                стекла.
+RULE:   R3
+        IF:     polos=2 ! polos=3
+        THEN:   kach=2; P:[kach]=kach;
+        REASON: Малая или значительная полосность стекла говорит о
+                его некачественности.
+
+RULE:   R4
+        IF:     osv=1 ! osv=2
+        THEN:   kach=2;P:[kach]=kach;
+        REASON: Плохое или удовлетворительное осветление стекла ука-
+                зывает на его некачественность.
+
+RULE:   R5
+        IF:     zerns=1
+        THEN:   nalser=1;P:[nalser]=nalser;
+        REASON: Очень крупный зерновой состав песка ведет   к появлению
+                кварцевых зерен в стекле.
+
+RULE:   R6
+        IF:     zerns=1 ! zerns=2
+        THEN:   odnor=3;P:[odnor]=odnor;
+        REASON: Крупный или очень крупный зерновой состав песка ведет
+                к тому, что шихта получается очень неоднородной.
+
+RULE:   R7
+        IF:     zerns=3 ! zerns=4
+        THEN:   odnor=2;P:[odnor]=odnor;
+        REASON: Средний или мелкий зерновой состав песка ведет к
+                неоднородности шихты.
+
+RULE:   R8
+        IF:     zerns=5 & (vlagn=2 ! vlagn=3)
+        THEN:   odnor=1;P:[odnor]=odnor;
+        REASON: Очень мелкий зерновой состав песка дает однородную
+                шихту.
+
+RULE:   R9
+        IF:     odnor=1 & vspen=1
+        THEN:   polos=1;P:[polos]=polos;
+        REASON: Однородность шихты при отсутствии вспенивания не
+                дает полосности стекла.
+
+RULE:   R10
+        IF:     odnor=2
+        THEN:   polos=2;P:[polos]=polos;
+        REASON: Неоднородность шихты ведет к малой полосности
+                стекла.
+
+RULE:   R11
+        IF:     odnor=3
+        THEN:   polos=3;P:[polos]=polos;
+        REASON: Oчень неоднородная шихта ведет к значительной полос-
+                ности стекла.
+
+
+RULE:   R12
+        IF:     vlagn=1
+        THEN:   odnor=2;P:[odnor]=odnor;
+        REASON: Сухость шихта делает ее неоднородной.
+
+RULE:   R13
+        IF:     vlagn=3
+        THEN:   sodg=5
+        REASON: Высокая влажность шихты ведет к повышенному содержа-
+                газов в ней.
+
+RULE:   R14
+        IF:     sodg=1 ! sodg=5
+        THEN:   osv=1; P:[osv]=osv;
+        REASON: Малое или высокое содержание газов в шихте приводит
+                к плохому осветлению стекла.
+
+RULE:   R15
+        IF:     sodg=2 ! sodg=4
+        THEN:   osv=2;P:[osv]=osv;
+        REASON: Содержание газов в шихте ниже или выше нормы приводит
+                к удовлетворительному осветлению стекла.
+
+RULE:   R16
+        IF:     sodg=3
+        THEN:   osv=3;P:[osv]=osv;
+        REASON: Нормальное содержание газов в шихте ведет к хорошему
+                осветлению стекла.
+
+RULE:   R17
+        IF:     sodg=1 ! sodg=2 ! sodg=3
+        THEN:   vspen=1;P:[vspen]=vspen;
+        REASON: Нормальное или малое содержание газов в шихте не
+                приводит к вспениванию стекломассы.
+
+RULE:   R18
+        IF:     sodg=4
+        THEN:   vspen=2;P:[vspen]=vspen;
+        REASON: Незначительное превышение нормы содержания газов в
+                шихте приводит к малому вспениванию стекломассы.
+
+RULE:   R19
+        IF:     sodg=5
+        THEN:   vspen=3;P:[vspen]=vspen;
+        REASON: Высокое содержание газов в шихте приводит к сильному
+                вспениванию стекломассы.
+
+
+RULE:   R20
+        IF:     vspen=2
+        THEN:   polos=2;P:[polos]=polos;
+        REASON: Малое вспенивание стекломассы ведет к появлению малой
+                полосности стекла.
+
+RULE:   R21
+        IF:     vspen=3
+        THEN:   polos=3;P:[polos]=polos;
+        REASON: Сильное вспенивание стекломассы ведет к значительной
+                полосности стекла.
+
+RULE:   R22
+        IF:     vspen=1 ! vspen=2
+        THEN:   nalser=0; P:[nalser]=nalser;
+        REASON: Отсутствие или малый уровень вспенивания стекломассы
+                не приведет к появлению зерен кварца в стекле.
+
+RULE:   R23
+        IF:     vspen=3
+        THEN:   nalser=1; P:[nalser]=nalser;
+        REASON: Сильное вспенивание стекломассы ведет к наличию зерен
+                кварца в стекле.
+END:

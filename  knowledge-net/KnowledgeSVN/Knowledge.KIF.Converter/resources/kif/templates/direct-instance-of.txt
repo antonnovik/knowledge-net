@@ -1,0 +1,42 @@
+(defrelation direct-instance-of (subrelation-of direct-instance-of instance-of)
+ (relation direct-instance-of) (arity direct-instance-of 2))
+
+(<<=
+ (not (exists (?other-class)
+       (and (not (= ?other-class ?class))
+            (instance-of ?individual ?other-class)
+            (subclass-of ?other-class ?class))))
+ (direct-instance-of ?individual ?class)
+ (consis
+  (not (exists (?other-class)
+        (and (not (= ?other-class ?class))
+             (instance-of ?individual ?other-class)
+             (subclass-of ?other-class ?class))))))
+
+(documentation direct-instance-of
+               "An individual i is an DIRECT-INSTANCE-OF class C if i is an
+instance-of C and there is no other subclass of C defined in the
+current ontology of which i is also an instance-of.  Such a class C is
+a `minimal' or `most-specific' parent class for the individual i.  The
+direct class is not necessarily unique; an individual can have several
+most-specific classes.  Note that this relation is indexical -- its
+truth depends the contents of the current knowledge base rather than
+the world.
+  The distinction between INSTANCE-OF and DIRECT-INSTANCE-OF is _not_
+the same as the relationship between asserting instance-of directly
+and having the system infer it.  The meanings of both instance-of and
+direct-instance-of, and every other object-level relation in a
+knowledge base mean, are independent of whether they are asserted
+explicitly or inferred.
+   Cyc makes the distinction between #%instanceOf and #%allInstanceOf.
+#%allInstanceOf means the same thing as INSTANCE-OF in our
+ontology.  However, #%instanceOf is subtlely different from
+direct-instance-of.  When someone asserts (#%instanceOf i C) to
+Cyc, it means the same thing as (#%allInstanceOf i C), but Cyc creates
+a pointer between an instance unit and a collection unit.  Later,
+someone may define a subclass C_sub of C and assert (#%instanceOf i
+C_sub), and this is consistent with the earlier #%instanceOf
+assertion.
+   Direct-instance-of is useful for maintaining a class hierarchy
+in a modular, canonical form.  It is defined here because some systems
+maintain direct-instance-of and some applications depend on this.")

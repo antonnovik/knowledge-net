@@ -1,0 +1,7 @@
+(defrelation onto (?relation ?range-class) :=
+ (subclass-of (exact-range ?relation) ?range-class) :axiom
+ (and (relation onto) (arity onto 2)))
+
+(documentation onto
+               "A relation R is ONTO range class C iff for every element y in C there
+is a tuple in R (x1, x2, ... y).")

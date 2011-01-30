@@ -1,0 +1,383 @@
+using System;
+
+namespace ConsoleApplication3
+{
+	/// <summary>
+	/// Summary description for Class1.
+	/// </summary>
+	class GlassExpert
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="comment">Takes a value from the console</param>
+		/// <param name="maxValue">sets maximum allowed value</param>
+		/// <returns>entered value</returns>
+		public static int getInt (string text, int maxValue)
+		{
+			Console.Write (text);
+			string result=Console.ReadLine();
+			try
+			{
+				int intResult = Convert.ToInt32(result);
+				if (intResult <= 0 || intResult > maxValue)
+				{
+					Console.WriteLine ("The value must be in the range from 1 to {0}, try again...", maxValue);
+					return getInt (text, maxValue);
+				}
+				return intResult;
+			}
+			catch
+			{
+				Console.WriteLine ("Wrong value, entered value must be integer, try again...");
+				return getInt(text, maxValue);
+			}
+		}
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		static void Main(string[] args)
+		{
+			int result=1;
+			while (result == 1)
+			{
+				CSharpExpert.firstStart();
+				
+				Console.WriteLine("Show comments during consultation: ");
+				Console.WriteLine("\t1 -- yes");
+				Console.WriteLine("\t2 -- no");
+				ProductionSystem.showComments = (getInt("Enter a value from 1 to 2: ", 2) == 1)? true : false;
+
+				Console.Out.WriteLine("Type of grain: ");
+				Console.Out.WriteLine("\t1 -- very coarse grain");
+				Console.Out.WriteLine("\t2 -- coarse grain");
+				Console.Out.WriteLine("\t3 -- medium grain");
+				Console.Out.WriteLine("\t4 -- fine grain");
+				Console.Out.WriteLine("\t5 -- very fine grain");
+				Grain.grains = getInt ("Enter a value from 1 to 5: ", 5);
+
+				Console.Out.WriteLine("Humidity of the charge: ");
+				Console.Out.WriteLine("\t1 -- dry");
+				Console.Out.WriteLine("\t2 -- normal");
+				Console.Out.WriteLine("\t3 -- very wet");
+				Charge.humidity = getInt ("Enter a value from 1 to 3: ", 3);
+
+				Console.Out.WriteLine("Gas amount in the charge");
+				Console.Out.WriteLine("\t1 -- low");
+				Console.Out.WriteLine("\t2 -- less than normal");
+				Console.Out.WriteLine("\t3 -- normal");
+				Console.Out.WriteLine("\t4 -- more than normal");
+				Console.Out.WriteLine("\t5 -- high");
+				Charge.gasAmount = getInt ("Enter a value from 1 to 5: ", 5);
+				//
+				QualityOfGlass.Quality quality = QualityOfGlass.Quality.undefined;
+				QualityOfGlass ruleset1 = (QualityOfGlass)CSharpExpert.getRulesetFrame("QualityOfGlass");
+				ruleset1.initContext();
+				ruleset1.initParameters(quality);
+				ProductionSystem.consult ("QualityOfGlass");
+			
+				ruleset1.getRefValues(ref quality);
+				Console.WriteLine("~~~~~~Result~~~~~~");
+				Console.WriteLine("quartzous grains: {0}", Glass.grainsAmount);
+				Console.WriteLine("streakiness: {0}", Glass.streakiness);
+				Console.WriteLine("clearing: {0}", Glass.clearing);
+				Console.WriteLine("foaming: {0}", Glass.foaming);
+				Console.WriteLine("homogeneity of the charge: {0}", Glass.homogeneity);
+				Console.WriteLine("QUALITY ESTIMATION: {0}", quality);
+
+				Console.WriteLine();
+				Console.WriteLine("1 -- one more consultation");
+				Console.WriteLine("2 -- exit");
+				result = getInt("Enter a value from 1 to 2: ", 2);
+			}
+
+		}
+	}
+}
+
+#frames
+frame class Grain
+{
+	public enum GrainType
+	{
+        veryCoarse=1,
+		coarse,
+		medium,
+		fine,
+		veryFine,
+		undefined
+	};
+
+	own_slots
+		Grain.GrainType grains = Grain.GrainType.undefined;
+}
+
+frame class Charge
+{
+	public enum HumidityType
+	{
+		dry=1,
+		normal,
+		wet,
+		undefined
+	};
+
+	public enum GasAmountType
+	{
+		low=1,
+		lessThanNormal,
+		normal,
+		moreThanNormal,
+		high,
+		undefined
+	};
+	
+	own_slots
+		Charge.HumidityType  humidity  = Charge.HumidityType.undefined;
+		Charge.GasAmountType gasAmount = Charge.GasAmountType.undefined;
+}
+
+frame class Glass
+{
+   public enum GrainType {absent, present, undefined};
+   public enum StreakinessType {none, few, considerable, undefined};
+   public enum ClearingType {bad, poor, good, undefined};
+   public enum FoamingType {none, low, high, undefined};
+   public enum HomogeneityType {homogeneous, heterogeneous, veryHeterogeneous, undefined};
+	
+	own_slots
+		Glass.GrainType grainsAmount = Glass.GrainType.undefined;
+		Glass.StreakinessType streakiness = Glass.StreakinessType.undefined;
+		Glass.ClearingType clearing = Glass.ClearingType.undefined;
+		Glass.FoamingType foaming = Glass.FoamingType.undefined;
+		Glass.HomogeneityType homogeneity = Glass.HomogeneityType.undefined;
+}
+
+frame ruleset QualityOfGlass (ref QualityOfGlass.Quality quality)
+{
+	public enum Quality {good, bad, undefined};
+	own_slots
+		context Grain, Charge, Glass;
+		goal quality;
+		rule
+		{
+			if (clearing == Glass.ClearingType.good 
+				&& streakiness == Glass.StreakinessType.none 
+				&& grainsAmount == Glass.GrainType.absent)
+			then
+			{
+				quality = Quality.good;
+			}
+			comment "Хорошее осветлениеь отсутствие полостности и зерен в стекле говорит о его хорошем качестве";
+		}R01;
+		rule
+		{
+			if (grainsAmount == Glass.GrainType.present)
+			then
+			{
+				quality = Quality.bad;
+			}
+			comment "Наличие кварцевых зерен указывает на некачественность стекла"; 
+		}R02;
+		rule
+		{
+			if (streakiness == Glass.StreakinessType.few ||
+				streakiness == Glass.StreakinessType.considerable)
+			then
+			{
+				quality = Quality.bad;
+			}
+			comment "Малая или значительная полосность стекла говорит о его некачественности";
+		}R03;
+		rule
+		{
+			if (clearing == Glass.ClearingType.bad || clearing == Glass.ClearingType.poor)
+			then
+			{
+				quality = Quality.bad;				
+			}
+			comment "Плохое или удовлетворительное осветление стекла указывает на его некачественность";
+		}R04;
+		rule
+		{
+			if (grains == Grain.GrainType.veryCoarse)
+			then
+			{
+				grainsAmount = Glass.GrainType.present;
+			}
+			comment "Очень крупный зерновой состав песка ведет   к появлению кварцевых зерен в стекле";
+		}R05;
+		rule
+		{
+			if (grains == Grain.GrainType.veryCoarse || grains == Grain.GrainType.coarse)
+			then
+			{
+				homogeneity = Glass.HomogeneityType.veryHeterogeneous; 
+			}
+			comment "Крупный или очень крупный зерновой состав песка ведет к тому, что шихта получается очень неоднородной";
+		}R06;
+		rule
+		{
+			if (grains == Grain.GrainType.medium || grains == Grain.GrainType.fine)
+			then
+			{
+				homogeneity = Glass.HomogeneityType.heterogeneous;
+			}
+			comment "Средний или мелкий зерновой состав песка ведет к неоднородности шихты";
+		}R07;
+		rule
+		{
+			if (grains == Grain.GrainType.veryFine && 
+				(humidity == Charge.HumidityType.normal || humidity == Charge.HumidityType.wet))
+			then
+			{
+				homogeneity = Glass.HomogeneityType.homogeneous;				
+			}
+			comment "Очень мелкий зерновой состав песка дает однородную шихту";
+		}R08;
+		rule
+		{
+			if (homogeneity == Glass.HomogeneityType.homogeneous &&
+				foaming == Glass.FoamingType.none)
+			then
+			{
+				streakiness = Glass.StreakinessType.none;				
+			}
+			comment "Однородность шихты при отсутствии вспенивания не дает полосности стекла";
+		}R09;
+		rule
+		{
+			if (homogeneity == Glass.HomogeneityType.heterogeneous)
+			then
+			{
+				streakiness = Glass.StreakinessType.few;
+			}
+			comment "Неоднородность шихты ведет к малой полосности стекла";
+		}R10;
+		rule
+		{
+			if (homogeneity == Glass.HomogeneityType.veryHeterogeneous)
+			then
+			{
+				streakiness = Glass.StreakinessType.considerable;
+			}
+			comment "Очень неоднородная шихта ведет к значительной полосности стекла";
+		}R11;
+		rule
+		{
+			if (humidity == Charge.HumidityType.dry)
+			then
+			{
+				homogeneity = Glass.HomogeneityType.heterogeneous;
+			}
+			comment "Сухость шихта делает ее неоднородной";
+		}R12;
+		rule
+		{
+			if (humidity == Charge.HumidityType.wet)
+			then
+			{
+				gasAmount = Charge.GasAmountType.high;
+			}
+			comment "Высокая влажность шихты ведет к повышенному содержанию газов в ней";
+		}R13;
+		rule
+		{
+			if(gasAmount == Charge.GasAmountType.low ||
+			   gasAmount == Charge.GasAmountType.high)
+			then
+			{
+				clearing = Glass.ClearingType.bad;
+			}
+			comment "Малое или высокое содержание газов в шихте приводит к плохому осветлению стекла";
+		}R14;
+		rule
+		{
+			if(gasAmount == Charge.GasAmountType.lessThanNormal ||
+			   gasAmount == Charge.GasAmountType.moreThanNormal)
+			then
+			{
+				clearing = Glass.ClearingType.poor;
+			}
+			comment "Содержание газов в шихте ниже или выше нормы приводит к удовлетворительному осветлению стекла";
+		}R15;
+		rule
+		{
+			if(gasAmount == Charge.GasAmountType.normal)
+			then
+			{
+				clearing = Glass.ClearingType.good;
+			}
+			comment "Нормальное содержание газов в шихте ведет к хорошему осветлению стекла";
+		}R16;
+		rule
+		{
+			if(gasAmount == Charge.GasAmountType.low ||
+			   gasAmount == Charge.GasAmountType.lessThanNormal ||
+			   gasAmount == Charge.GasAmountType.normal)
+			then
+			{
+				foaming = Glass.FoamingType.none;
+			}
+			comment "Нормальное или малое содержание газов в шихте не приводит к вспениванию стекломассы";
+		}R17;
+		rule
+		{
+			if (gasAmount == Charge.GasAmountType.moreThanNormal)
+			then
+			{
+				foaming = Glass.FoamingType.low;
+			}
+			comment "Незначительное превышение нормы содержания газов в шихте приводит к малому вспениванию стекломассы";
+		}R18;
+		rule
+		{
+			if (gasAmount == Charge.GasAmountType.high)
+			then
+			{
+				foaming = Glass.FoamingType.high;
+			}
+			comment "Высокое содержание газов в шихте приводит к сильному вспениванию стекломассы";
+		}R19;
+		rule
+		{
+			if (foaming == Glass.FoamingType.low)
+			then
+			{
+				streakiness = Glass.StreakinessType.few;
+			}
+			comment "Малое вспенивание стекломассы ведет к появлению малой полосности стекла";
+		}R20;
+		rule
+		{
+			if (foaming == Glass.FoamingType.high)
+			then
+			{
+				streakiness = Glass.StreakinessType.considerable;				
+			}
+			comment "Сильное вспенивание стекломассы ведет к значительной полосности стекла";
+		}R21;
+		rule
+		{
+			if (foaming == Glass.FoamingType.none || foaming == Glass.FoamingType.low)
+			then
+			{
+				grainsAmount = Glass.GrainType.absent;
+			}
+			
+			comment "Отсутствие или малый уровень вспенивания стекломассы не приведет к появлению зерен кварца в стекле";
+		
+		}R22;
+		rule
+		{
+			if (foaming == Glass.FoamingType.high)
+			then			
+			{
+				grainsAmount = Glass.GrainType.present;
+			}
+			comment "Сильное вспенивание стекломассы ведет к наличию зерен кварца в стекле";
+		}R23;
+		
+}
+

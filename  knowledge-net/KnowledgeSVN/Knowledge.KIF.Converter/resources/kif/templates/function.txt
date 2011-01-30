@@ -1,0 +1,16 @@
+(defrelation function (?relation) :=
+ (and (relation ?relation)
+      (forall (?tuple1 ?tuple2)
+       (=> (member ?tuple1 ?relation) (member ?tuple2 ?relation)
+        (= (butlast ?tuple1) (butlast ?tuple2))
+        (= (last ?tuple1) (last ?tuple2)))))
+ :axiom (and (subclass-of function relation) (class function)))
+
+(documentation function
+               "A function is a mapping from a domain to a range that associates a
+domain element with exactly one range element.  The elements of the
+domain are tuples, as in relations.  The range is a class -- a set of
+singleton tuples -- and element of the range is an instance of the
+class.  Functions are also first-class objects in the same sense that
+relations are objects: namely, functions can be viewed as sets of
+tuples.")

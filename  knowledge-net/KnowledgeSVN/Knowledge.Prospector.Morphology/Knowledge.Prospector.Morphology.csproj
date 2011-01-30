@@ -1,0 +1,64 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50215</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E2FDA7E-0BF3-42ED-8BB2-EA241AEB69DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Knowledge.Prospector.Morphology</RootNamespace>
+    <AssemblyName>Knowledge.Prospector.Morphology</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MrdTree.cs" />
+    <Compile Include="Grammar\AnCode.cs" />
+    <Compile Include="Grammar\EngGramTab.cs" />
+    <Compile Include="Grammar\EngGramTabLineManager.cs" />
+    <Compile Include="Grammar\Generated.cs" />
+    <Compile Include="Grammar\GrammaticalCategory.cs" />
+    <Compile Include="Grammar\GramTab.cs" />
+    <Compile Include="Grammar\GramTabLine.cs" />
+    <Compile Include="Grammar\GramTabLineManager.cs" />
+    <Compile Include="Grammar\PartOfSpeech.cs" />
+    <Compile Include="Grammar\RusGramTab.cs" />
+    <Compile Include="Grammar\RusGramTabLineManager.cs" />
+    <Compile Include="AccentModel.cs" />
+    <Compile Include="FlexiaModel.cs" />
+    <Compile Include="FullLemmaInfo.cs" />
+    <Compile Include="LemmaInfo.cs" />
+    <Compile Include="MorphologicForm.cs" />
+    <Compile Include="MrdDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Knowledge.Prospector.Common\Knowledge.Prospector.Common.csproj">
+      <Project>{5F238122-3562-4395-A6B3-D211FFF7FA2A}</Project>
+      <Name>Knowledge.Prospector.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

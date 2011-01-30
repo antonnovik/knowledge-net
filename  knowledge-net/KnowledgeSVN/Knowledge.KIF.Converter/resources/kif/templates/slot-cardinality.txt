@@ -1,0 +1,17 @@
+(deffunction slot-cardinality
+ (<=> (slot-cardinality ?domain-class ?binary-relation ?n)
+  (=> (instance-of ?instance ?domain-class)
+   (= (value-cardinality ?instance ?binary-relation) ?n)))
+ (function slot-cardinality) (arity slot-cardinality 3)
+ (nth-domain slot-cardinality 1 class)
+ (nth-domain slot-cardinality 2 binary-relation)
+ (nth-domain slot-cardinality 3 nonnegative-integer))
+
+(documentation slot-cardinality
+               "If a SLOT-CARDINALITY of relation R with respect to a domain
+class C is N, then for all instances c of class C, R maps c to exactly
+N individuals in the range.  For single-valued relations, the
+slot-cardinality is 1.  Specifying a SLOT-CARDINALITY is a constraint
+between classes and binary-relations which does not always hold; there
+need not be any fixed value-cardinality for R on all instances of C.")
+

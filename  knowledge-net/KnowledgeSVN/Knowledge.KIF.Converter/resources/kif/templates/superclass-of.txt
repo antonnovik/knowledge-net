@@ -1,0 +1,10 @@
+(defrelation superclass-of (inverse superclass-of subclass-of)
+ (relation superclass-of) (arity superclass-of 2))
+
+(documentation superclass-of
+               "Superclass-of is the inverse of the subclass-of relation.
+It is useful to create an explicit inverse because
+there are efficient ways to assert and query superclass and subclass
+relationships separately. 
+  In Cyc, superclass-of is called #%allSpecs because it is a slot from
+a collection to all of its specializations (subclasses).")

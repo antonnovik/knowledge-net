@@ -1,0 +1,17 @@
+(deffunction relation-universe
+ (<=> (relation-universe ?relation ?type-class)
+  (and (relation ?relation)
+       (class ?type-class)
+       (forall (?x)
+        (<=> (exists (?tuple) (and (member ?tuple ?relation) (item ?x ?tuple)))
+         (instance-of ?x ?type-class)))))
+ (function relation-universe) (domain relation-universe relation)
+ (range relation-universe class) (arity relation-universe 2))
+
+(documentation relation-universe
+               "A relation-universe of a relation of any arity is a class
+from which is drawn every item in every tuple of the relation.
+Like EXACT-DOMAIN, it is exactly those items and no other.
+Thus, to state that the universe of a relation is covered by
+some class, one can state that the relation-universe is a subclass
+of the covering class.")

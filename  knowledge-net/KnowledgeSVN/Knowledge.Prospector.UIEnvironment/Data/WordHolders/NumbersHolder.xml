@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Holders>
+	<WordHolder Name="Number">
+		<!-- Begin Russian -->
+		<!-- Begin Количественные -->
+		<!-- 1-9 -->
+		<Item Word="один"						Value="1" />
+		<Item Word="два"							Value="2" />
+		<Item Word="три"							Value="3" />
+		<Item Word="четыре"					Value="4" />
+		<Item Word="пять"						Value="5" />
+		<Item Word="шесть"						Value="6" />
+		<Item Word="семь"						Value="7" />
+		<Item Word="восемь"					Value="8" />
+		<Item Word="девять"					Value="9" />
+
+		<!-- 11-19 -->
+		<Item Word="одиннадцать"			Value="11" />
+		<Item Word="двенадцать"			Value="12" />
+		<Item Word="тринадцать"			Value="13" />
+		<Item Word="четырнадцать"		Value="14" />
+		<Item Word="пятнадцать"			Value="15" />
+		<Item Word="шестнадцать"			Value="16" />
+		<Item Word="семнадцать"			Value="17" />
+		<Item Word="восемнадцать"		Value="18" />
+		<Item Word="девятнадцать"		Value="19" />
+
+		<!-- 10* -->
+		<Item Word="десять"					Value="10" />
+		<Item Word="двадцать"				Value="20" />
+		<Item Word="тридцать"				Value="30" />
+		<Item Word="сорок"						Value="40" />
+		<Item Word="пятьдесят"				Value="50" />
+		<Item Word="шестьдесят"			Value="60" />
+		<Item Word="семьдесят"				Value="70" />
+		<Item Word="восемьдесят"			Value="80" />
+		<Item Word="девяносто"				Value="90" />
+
+		<!-- 100* -->
+		<Item Word="сто"							Value="100" />
+		<Item Word="двести"					Value="200" />
+		<Item Word="триста"					Value="300" />
+		<Item Word="четыреста"				Value="400" />
+		<Item Word="пятьсот"					Value="500" />
+		<Item Word="шестьсот"				Value="600" />
+		<Item Word="семьсот"					Value="700" />
+		<Item Word="восемьсот"				Value="800" />
+		<Item Word="девятьсот"				Value="900" />
+
+		<!-- 1000*... -->
+		<Item Word="тысяча"					Value="1000" />
+		<Item Word="миллион"					Value="1000000" />
+		<Item Word="миллиард"				Value="1000000000" />
+		<!-- End Количественные -->
+
+		<!-- Begin Порядковые -->
+		<!-- 1-9 -->
+		<Item Word="ПЕРВЫЙ"					Value="1" />
+		<Item Word="ВТОРОЙ"					Value="2" />
+		<Item Word="ТРЕТИЙ"					Value="3" />
+		<Item Word="ЧЕТВЕРТЫЙ"				Value="4" />
+		<Item Word="ПЯТЫЙ"						Value="5" />
+		<Item Word="ШЕСТОЙ"					Value="6" />
+		<Item Word="СЕДЬМОЙ"					Value="7" />
+		<Item Word="ВОСЬМОЙ"					Value="8" />
+		<Item Word="ДЕВЯТЫЙ"					Value="9" />
+
+		<!-- 11-19 -->
+		<Item Word="ОДИННАДЦАТЫЙ"		Value="11" />
+		<Item Word="ДВЕНАДЦАТЫЙ"			Value="12" />
+		<Item Word="ТРИНАДЦАТЫЙ"			Value="13" />
+		<Item Word="ЧЕТЫРНАДЦАТЫЙ"		Value="14" />
+		<Item Word="ПЯТНАДЦАТЫЙ"			Value="15" />
+		<Item Word="ШЕСТНАДЦАТЫЙ"		Value="16" />
+		<Item Word="СЕМНАДЦАТЫЙ"			Value="17" />
+		<Item Word="ВОСЕМНАДЦАТЫЙ"		Value="18" />
+		<Item Word="ДЕВЯТНАДЦАТЫЙ"		Value="19" />
+
+		<!-- 10* -->
+		<Item Word="ДЕСЯТЫЙ"					Value="10" />
+		<Item Word="ДВАДЦАТЫЙ"				Value="20" />
+		<Item Word="ТРИДЦАТЫЙ"				Value="30" />
+		<Item Word="СОРОКОВОЙ"				Value="40" />
+		<Item Word="ПЯТИДЕСЯТЫЙ"			Value="50" />
+		<Item Word="ШЕСТИДЕСЯТЫЙ"		Value="60" />
+		<Item Word="СЕМИДЕСЯТЫЙ"			Value="70" />
+		<Item Word="ВОСЬМИДЕСЯТЫЙ"		Value="80" />
+		<Item Word="ДЕВЯНОСТЫЙ"			Value="90" />
+
+		<!-- 100* -->
+		<Item Word="СОТЫЙ"						Value="100" />
+		<Item Word="ДВУХСОТЫЙ"				Value="200" />
+		<Item Word="ТРЕХСОТЫЙ"				Value="300" />
+		<Item Word="ЧЕТЫРЕХСОТЫЙ"		Value="400" />
+		<Item Word="ПЯТИСОТЫЙ"				Value="500" />
+		<Item Word="ШЕСТИСОТЫЙ"			Value="600" />
+		<Item Word="СЕМИСОТЫЙ"				Value="700" />
+		<Item Word="ВОСЬМИСОТЫЙ"			Value="800" />
+		<Item Word="ДЕВЯТИСОТЫЙ"			Value="900" />
+
+		<!-- 1000*... -->
+		<Item Word="ТЫСЯЧНЫЙ"				Value="1000" />
+		<Item Word="МИЛЛИОННЫЙ"			Value="1000000" />
+		<Item Word="МИЛЛИАРДНЫЙ"			Value="1000000000" />
+		<!-- End Порядковые -->
+		<!-- End Russian -->
+
+
+
+		<!-- Begin English -->
+		<!-- Begin cardinal -->
+		<!-- 1-9 -->
+		<Item Word="one"							Value="1" />
+		<Item Word="two"							Value="2" />
+		<Item Word="three"						Value="3" />
+		<Item Word="four"						Value="4" />
+		<Item Word="five"						Value="5" />
+		<Item Word="six"							Value="6" />
+		<Item Word="seven"						Value="7" />
+		<Item Word="eight"						Value="8" />
+		<Item Word="nine"						Value="9" />
+
+		<!-- 11-19 -->
+		<Item Word="eleven"					Value="11" />
+		<Item Word="twelve"					Value="12" />
+		<Item Word="thirteen"				Value="13" />
+		<Item Word="fourteen"				Value="14" />
+		<Item Word="fifteen"					Value="15" />
+		<Item Word="sixteen"					Value="16" />
+		<Item Word="seventeen"				Value="17" />
+		<Item Word="eighteen"				Value="18" />
+		<Item Word="nineteen"				Value="19" />
+
+		<!-- 10* -->
+		<Item Word="ten"							Value="10" />
+		<Item Word="twenty"					Value="20" />
+		<Item Word="thirty"					Value="30" />
+		<Item Word="forty"						Value="40" />
+		<Item Word="fifty"						Value="50" />
+		<Item Word="sixty"						Value="60" />
+		<Item Word="seventy"					Value="70" />
+		<Item Word="eighty"					Value="80" />
+		<Item Word="ninety"					Value="90" />
+
+		<!-- 100* -->
+		<Item Word="hundred"					Value="100" />
+
+		<!-- 1000*... -->
+		<Item Word="thousand"				Value="1000" />
+		<Item Word="million"					Value="1000000" />
+		<Item Word="billion"					Value="1000000000" />
+		<Item Word="milliard"				Value="1000000000" />
+		<!-- End cardinal -->
+		<!-- End English -->
+	</WordHolder>
+</Holders>

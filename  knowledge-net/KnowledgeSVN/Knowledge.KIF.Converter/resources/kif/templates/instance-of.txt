@@ -1,0 +1,17 @@
+(defrelation instance-of (?individual ?class) :=
+ (and (class ?class) (holds ?class ?individual)) :axiom
+ (and (range instance-of class) (relation instance-of) (arity instance-of 2)))
+
+(<=> (instance-of ?individual ?class) (member (listof ?individual) ?class))
+
+(documentation instance-of
+               "An object is an instance-of a class if it is a member of the set
+denoted by that class.  One would normally state the fact that
+individual i is an instance of class C with with the relational 
+form (C i), but it is equivalent to say (INSTANCE-OF i C).  
+Instance-of is useful for defining the second-order relations and
+classes that are about class/instance networks.
+  An individual may be an instance of many classes, some of which may be
+subclasses of others.  Thus, there is no assumption in the meaning
+of instance-of about specificity or uniqueness.  See
+DIRECT-INSTANCE-OF.")

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Holders FirstIndex="0">
+	<ClauseHolder Name="Class">
+		<Item Pattern="[#E.P #M.Adjective]* #E.C" Index="1" />
+		<Item Pattern="[#E.P #M.Adjective] , [#E.P #M.Adjective] #E.C" Index="2" />
+	</ClauseHolder>
+</Holders>

@@ -1,0 +1,69 @@
+class Test
+{
+	public static void ivanovAge(int i)
+	{
+		 Ivanov.age=i;
+	}
+
+	public static void IvanovPrintOut() 
+	{
+		Console.WriteLine ("Age of Ivanov {0}", Ivanov.age);
+		Console.WriteLine ("Sex of Ivanov {0}", Ivanov.sex);
+		Console.WriteLine ("Average Mark of Ivanov {0}", Ivanov.average_mark);
+		Console.WriteLine ("Average Mark of Alexeev {0}", Alexeev.average_mark);
+	}
+}
+
+
+#frames
+	frame class Human 
+		  {
+			  public enum Sex {male, female};
+own_slots
+			 int max_age=0;
+
+instance_slots
+			  int age;
+			  string name;
+			  Human.Sex sex;
+		  }
+
+	frame class Student
+		  {
+
+			  own_slots
+				  is_a Human;
+			  instance_slots
+				  double average_mark;
+		  }
+
+	frame instance Ivanov
+				   {
+	own_slots
+		is_a Student;
+	average_mark=(double)4.5;
+	age=19;
+	name="Konstnantin";
+	sex = Human.Sex.male;
+}
+
+frame instance Alexeev
+{
+own_slots
+is_a Student;
+average_mark=(double)3;
+age=21;
+name="Egor";
+sex = Human.Sex.male;
+}
+
+frame instance Nikolaeva
+{
+own_slots
+	is_a Human;
+	age=30;
+	name="Olga";
+	
+	sex = Human.Sex.female;
+
+}

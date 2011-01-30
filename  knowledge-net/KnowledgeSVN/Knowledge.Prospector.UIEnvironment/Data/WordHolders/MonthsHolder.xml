@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Holders FirstIndex="0">
+	<WordHolder Name="Month">
+		<Item Word="ЯНВАРЬ"		Value="1" />
+		<Item Word="ФЕВРАЛЬ"		Value="2" />
+		<Item Word="МАРТ"			Value="3" />
+		<Item Word="АПРЕЛЬ"		Value="4" />
+		<Item Word="МАЙ"				Value="5" />
+		<Item Word="ИЮНЬ"			Value="6" />
+		<Item Word="ИЮЛЬ"			Value="7" />
+		<Item Word="АВГУСТ"		Value="8" />
+		<Item Word="СЕНТЯБРЬ"	Value="9" />
+		<Item Word="ОКТЯБРЬ"		Value="10" />
+		<Item Word="НОЯБРЬ"		Value="11" />
+		<Item Word="ДЕКАБРЬ"		Value="12" />
+
+		<Item Word="January"		Value="1" />
+		<Item Word="February"	Value="2" />
+		<Item Word="March"			Value="3" />
+		<Item Word="April"			Value="4" />
+		<Item Word="May"				Value="5" />
+		<Item Word="June"			Value="6" />
+		<Item Word="July"			Value="7" />
+		<Item Word="August"		Value="8" />
+		<Item Word="September"	Value="9" />
+		<Item Word="October"		Value="10" />
+		<Item Word="November"	Value="11" />
+		<Item Word="December"	Value="12" />
+	</WordHolder>
+</Holders>

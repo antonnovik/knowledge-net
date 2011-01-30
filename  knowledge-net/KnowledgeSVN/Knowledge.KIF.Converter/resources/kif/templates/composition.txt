@@ -1,0 +1,13 @@
+(deffunction composition
+ (= (composition ?r1 ?r2)
+    (if (and (binary-relation ?r1) (binary-relation ?r2))
+        (setofall (listof ?x ?z)
+         (exists (?y) (and (holds ?r1 ?x ?y) (holds ?r2 ?y ?z))))))
+ (function composition) (arity composition 3)
+ (nth-domain composition 1 binary-relation)
+ (nth-domain composition 2 binary-relation)
+ (nth-domain composition 3 binary-relation))
+
+(documentation composition
+               "The composition of binary relations R_1 and R_2 is a relation R_3
+such that R_1(x,y) and R_2(y,z) implies R_3(x,z).")

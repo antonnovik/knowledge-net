@@ -1,0 +1,37 @@
+(defrelation class (?class) := (and (relation ?class) (= (arity ?class) 1))
+ :axiom (and (subclass-of class relation) (class class)))
+
+(documentation class
+               "A class can be thought of as a collection of individuals.
+Formally, a class is a unary relation, a set of tuples (lists) of
+length one.  Each tuple contains an object which is said to be an
+instance of the class.  An individual, or object, is any identifiable
+entity in the universe of discourse (anything that can be denoted by a
+object constant in KIF), including classes themselves.
+  The notion of CLASS is introduced in addition to the relation
+vocabulary because of the importance of classes and types in knowledge
+representation practice.  The notion of class and relation are merged
+to unify relational and object-centered representational conventions.
+Classes serve the role of `sorts' and `types'.
+   There is no first-order distinction between classes and unary
+relations.  One is free to define a second-order predicate that makes
+the distinction.  For example, (predicate C) could mean that the unary
+relation C should be thought of more as a property than as a
+collection of individuals over which one might quantify some
+statement.  Logically, all such predicates would still be instances of
+the metaclass CLASS.
+  The fact that an object i is an instance of class C is denoted by
+the sentence (C i).  One may also use the equivalent form
+ (INSTANCE-OF i C).  This is not equivalent to (MEMBER i C).
+An instance of a class is not a set-theoretic
+member of the class; rather, the tuple containing the instance is a
+element of the set of tuples which is a relation.
+  The definition of a class is a predicate over a single free
+variable, such that the predicate holds for instances of the class.
+In other words, classes are defined _intentionally_.  Two
+separately-defined classes may have the same extension (in this case
+they are = to each other).  It is possible to define a class by
+enumerating its instances, using KIF's set operations.  For example,
+  (define-class primary-color (?color)
+     (member ?color (set red green blue)))
+")

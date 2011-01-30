@@ -1,0 +1,7 @@
+(defrelation irreflexive-relation (?r) :=
+ (and (binary-relation ?r) (not (reflexive-relation ?r))) :axiom
+ (and (subclass-of irreflexive-relation binary-relation)
+      (class irreflexive-relation)))
+
+(documentation irreflexive-relation
+               "Relation R is irreflexive if it is not reflexive.")

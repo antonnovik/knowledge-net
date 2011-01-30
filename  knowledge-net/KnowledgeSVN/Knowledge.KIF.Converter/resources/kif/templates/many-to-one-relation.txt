@@ -1,0 +1,5 @@
+(defrelation many-to-one-relation (?r) :=
+ (and (binary-relation ?r) (function ?r)) :axiom
+ (and (subclass-of many-to-one-relation binary-relation)
+      (subclass-of many-to-one-relation function)
+      (class many-to-one-relation)))

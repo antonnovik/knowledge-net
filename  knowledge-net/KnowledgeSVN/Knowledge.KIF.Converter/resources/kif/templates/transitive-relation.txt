@@ -1,0 +1,10 @@
+(defrelation transitive-relation (?r) :=
+ (and (binary-relation ?r)
+      (=> (and (holds ?r ?x ?y) (holds ?r ?y ?z)) (holds ?r ?x ?z)))
+ :axiom
+ (and (subclass-of transitive-relation binary-relation)
+      (class transitive-relation)))
+
+(documentation transitive-relation
+               "Relation R is transitive if R(x,y) and R(y,z) implies R(x,z).")
+

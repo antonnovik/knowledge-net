@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English, Russian">
+	<!--Begin Shortcut file. We can use such sintax:
+	<Shortcut Name="Replace" Class="Knowledge.Prospector.Templates.Handlers.Common.ReplaceHandler, Knowledge.Prospector" />
+	End Shortcut file-->
+
+	<!--Begin Templates file-->
+
+	<!--Template Priority="4">
+		<Pattern>
+			<Validator Ref="1" Value="#E.C" />
+			<Validator Ref="2" Value="less" />
+			<Validator Ref="3" Value="#E.C" />
+		</Pattern>
+		<Handlers>
+			<Handler Name="CreateClassToClassRelationship">
+				<Arguments>
+					<Argument Ref="2" />
+					<Argument Ref="1" />
+					<Argument Ref="3" />
+					<Argument Value="Transitive" />
+				</Arguments>
+			</Handler>
+		</Handlers>
+	</Template-->
+
+	<!--Template Priority="4" Pattern="#E.C less #E.C">
+		<CommonHandler Name="Replace" From="0" Count="5" >
+			<CreateEntityHandler Name="CreateDateTime" >
+				<Argument Description="day"  Value="1" />
+				<Argument Description="month"  Value="0" />
+			</CreateEntityHandler>
+		</CommonHandler>
+	</Template-->
+
+	<!--End Templates file-->
+
+	<!--Begin Holder file. We can use such sintax:
+	<Holder Name="Class">
+		<Item Pattern="[#E.P #M.Adjective]+ #E.C" Index="1" />
+		<Item Pattern="TABLE" Index="0" />
+	</Holder>
+	End Holder file-->
+</Templates>

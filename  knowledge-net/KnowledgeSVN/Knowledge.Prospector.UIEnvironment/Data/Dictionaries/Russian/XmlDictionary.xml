@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dictionary>
+
+	<entity class="relationship" value="РАВНО" type="equivalence">
+		<symmetric />
+		<transitive />
+	</entity>
+
+	<entity class="relationship" value="МЕНЬШЕ">
+		<transitive />
+	</entity>
+
+	<entity class="relationship" value="БОЛЬШЕ">
+		<transitive />
+	</entity>
+
+	<entity class="relationship" value="ПОДКЛАСС" type="subclass" />
+	<entity class="relationship" value="ПОДМНОЖЕСТВО" type="subclass" />
+	<entity class="relationship" value="ЭТО" type="subclass" />
+	
+
+	<entity class="relationship" value="ЯВЛЯЕТСЯ" type="equivalence" />
+	
+	
+	<entity class="relationship" value="РАСПОЛОЖЕН В">
+		<transitive />
+	</entity>
+
+	<!-- Begin For memory -->
+	<lexical class="adjective" value="_БОЛЬШОЙ"/>
+	<lexical class="adjective" value="_БЕЛЫЙ"/>
+	<lexical class="noun" value="_ДОМ"/>
+	<lexical class="noun" value="_ЗДАНИЕ"/>
+	
+	<lexical class="noun" value="_ДЕРЕВНЯ">
+		<element>
+			<root value="_ДЕРЕВН"/>
+		</element>
+	</lexical>
+	<!-- End For memory -->
+
+	<!-- Begin For testing -->
+
+	<!-- End for testing-->
+</dictionary>

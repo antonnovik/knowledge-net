@@ -1,0 +1,175 @@
+﻿//#g_h#using System.Collections.Generic;
+#g_h# 
+#g_h#namespace Knowledge.Prospector.Morphology.Grammar
+#g_h#{
+#g_f#}
+
+
+//Common..
+#name#PartOfSpeech - Constants
+#h#	public partial struct PartOfSpeech
+#h#	{
+#*#		public static readonly PartOfSpeech {0} = new PartOfSpeech({1});
+#f#	}
+#p# PartOfSpeech, Common
+#c#		
+#=#
+
+//Russian..
+#name#RussianPartOfSpeeches - Constants
+#h#	public static partial class RussianPartOfSpeeches
+#h#	{
+#*#		public static readonly PartOfSpeech {0} = new PartOfSpeech({1});
+#f#	}
+#p# PartOfSpeech, Russian
+#c#		
+#=#
+
+#name#RussianPartOfSpeeches - Converter
+#h#	public static partial class RussianPartOfSpeeches
+#h#	{
+#h#		private static Dictionary<string, PartOfSpeech> Converter = new Dictionary<string, PartOfSpeech>();
+#h#		static RussianPartOfSpeeches()
+#h#		{
+#*#			Converter["{0}"] = {1};
+#f#		}
+#f#	
+#f#		public static PartOfSpeech Convert(string str)
+#f#		{
+#f#			if (Converter.ContainsKey(str))
+#f#				return Converter[str];
+#f#			else
+#f#				return Unknown;
+#f#		}
+#f#	}
+#p# RussianConverter, PartOfSpeech
+#c#			
+#=#
+
+//English..
+#name#EnglishPartOfSpeeches - Constants
+#h#	public static partial class EnglishPartOfSpeeches
+#h#	{
+#*#		public static readonly PartOfSpeech {0} = new PartOfSpeech({1});
+#f#	}
+#p# PartOfSpeech, English
+#c#		
+#=#
+
+#name#EnglishPartOfSpeeches - Converter
+#h#	public static partial class EnglishPartOfSpeeches
+#h#	{
+#h#		private static Dictionary<string, PartOfSpeech> Converter = new Dictionary<string, PartOfSpeech>();
+#h#		static EnglishPartOfSpeeches()
+#h#		{
+#*#			Converter["{0}"] = {1};
+#f#		}
+#f#	
+#f#		public static PartOfSpeech Convert(string str)
+#f#		{
+#f#			if (Converter.ContainsKey(str))
+#f#				return Converter[str];
+#f#			else
+#f#				throw new Exception(string.Format("No such part of speech: {0}", str));
+#f#		}
+#f#	}
+#p# EnglishConverter, PartOfSpeech
+#c#			
+#=#
+
+
+PartOfSpeech							Common		Russian		RussianConverter	English		EnglishConverter
+
+///Не известная часть речи
+Unknown									0			0			_					0			_
+Unknown									_			_			*					_			*
+
+///Имя существительное
+Noun									1L << 0		1L << 0		С					1L << 0		NOUN
+
+///Полное имя прилагательное
+AdjectiveFull							1L << 1		1L << 1		П					_			_
+
+///Краткое имя прилагательное
+AdjectiveShort							1L << 2		1L << 2		КР_ПРИЛ				_			_
+
+///Имя прилагательное
+Adjective								1L << 1 | 1L << 2	_	_					_			_
+///Имя прилагательное
+Adjective								_			_			_			1L << 1 | 1L << 2	ADJECTIVE
+
+///Глагол
+Verb									1L << 3		1L << 3		Г					1L << 3		VERB
+
+///Имя числительное
+Numeral							CardinalNumeral | OrdinalNumeral	_	_	_	_
+///Имя числительное
+Numeral							_	CardinalNumeral | OrdinalNumeral	_	_	_
+///Имя числительное
+Numeral							_	_	_	CardinalNumeral | OrdinalNumeral	_
+
+///Количественное числительное
+CardinalNumeral							1L << 4		1L << 4		ЧИСЛ				1L << 4		NUMERAL
+
+///Порядковое числительное
+OrdinalNumeral							1L << 5		1L << 5		ЧИСЛ-П				1L << 5		ORDNUM
+
+///Местоимение-существительное
+Pronoun									1L << 6		1L << 6		МС					1L << 6		PRON
+Pronoun									_			_			_					_			PN
+
+///Местоименное прилагательное
+PronounAdjective						1L << 7		1L << 7		МС-П				1L << 7		PN_ADJ
+
+///Местоимение-предикатив
+PronounPredicate						1L << 8		1L << 8		МС-ПРЕДК			_			_
+
+///Наречие
+Adverb									1L << 9		1L << 9		Н					1L << 9		ADVERB
+
+///Предикатив
+Predicate								1L << 10	1L << 10	ПРЕДК				_			_
+
+///Предлог
+Preposition								1L << 11	1L << 11	ПРЕДЛ				1L << 11	PREP
+
+//Послелог
+
+///Союз
+Conjunction								1L << 12	1L << 12	СОЮЗ				1L << 12	CONJ
+
+///Междометие
+Interjection							1L << 13	1L << 13	МЕЖД				1L << 13	INT
+
+///Вводное (INP)
+Introductory							1L << 14	1L << 14	ВВОДН				_			_
+
+//Элемент фразеологического сочетания
+//Phrase								1L << 15	
+
+///Частица
+Particle								1L << 16	1L << 16	ЧАСТ				1L << 16	PART
+
+///Причастие
+Participle								1L << 17	1L << 17	ПРИЧАСТИЕ			_			_
+
+///Деепричастие
+AdverbParticiple						1L << 18	1L << 18	ДЕЕПРИЧАСТИЕ		_			_
+
+///Краткое причастие
+ParticipleShort							1L << 19	1L << 19	КР_ПРИЧАСТИЕ		_			_
+
+///Инфинитив, неопределенная форма глагола
+Infinitive								1L << 20	1L << 20	ИНФИНИТИВ			_			_
+
+//Модальный глагол
+ModalVerb								1L << 21	_			_					1L << 21	MOD
+
+//Артикль
+Article									1L << 22	_			_					1L << 22	ARTICLE
+
+//'s
+Poss									1L << 23	_			_					1L << 23	POSS
+
+//Глагол To be
+VerbToBe								_			_			_					1L << 24	VBE

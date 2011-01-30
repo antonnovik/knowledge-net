@@ -1,0 +1,14 @@
+(defrelation minimum-value-cardinality (?instance ?binary-relation ?n) :=
+ (and (binary-relation ?binary-relation)
+      (nonnegative-integer ?n)
+      (>= (value-cardinality ?instance ?binary-relation) ?n))
+ :axiom
+ (and (nth-domain minimum-value-cardinality 2 binary-relation)
+      (nth-domain minimum-value-cardinality 3 nonnegative-integer)
+      (relation minimum-value-cardinality)
+      (arity minimum-value-cardinality 3)))
+
+(documentation minimum-value-cardinality
+               "Minimum value cardinality is a constraint on the number of values to
+which a binary relation can map a domain instance.  It implies the existence
+of at least N values for a given relation on an instance.")

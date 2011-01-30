@@ -1,0 +1,18 @@
+(deffunction all-inherited-slot-values
+ (<=> (all-inherited-slot-values ?class ?binary-relation ?set-of-values)
+  (and (class ?class)
+       (binary-relation ?binary-relation)
+       (forall (?instance ?value)
+        (=> (instance-of ?instance ?class)
+         (<=> (member ?value ?set-of-values)
+          (holds ?binary-relation ?instance ?value))))))
+ (function all-inherited-slot-values)
+ (nth-domain all-inherited-slot-values 1 class)
+ (nth-domain all-inherited-slot-values 2 binary-relation)
+ (arity all-inherited-slot-values 3))
+
+(documentation all-inherited-slot-values
+               "The all-inherited-slot-values of binary relation R on class C is the set V
+of values for which R(c,s) holds on each instance i of C and member v of V.
+Unlike inherited-slot-values, there may not exist any other value v_i for which
+R(i,v_i) holds.  Inherited values are monotonic, not default.")

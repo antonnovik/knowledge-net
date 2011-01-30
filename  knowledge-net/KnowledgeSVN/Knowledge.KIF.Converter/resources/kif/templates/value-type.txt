@@ -1,0 +1,17 @@
+(defrelation value-type (?instance ?binary-relation ?type) :=
+ (and (binary-relation ?binary-relation)
+      (class ?type)
+      (forall (?value)
+       (=> (holds ?binary-relation ?instance ?value)
+        (instance-of ?value ?type))))
+ :axiom
+ (and (nth-domain value-type 2 binary-relation)
+      (nth-domain value-type 3 class)
+      (relation value-type)
+      (arity value-type 3)))
+
+(documentation value-type
+               "The VALUE-TYPE of a binary relation R with respect to a given
+instance d is a constraint on the values of R when R is applied to d.
+The constraint is specified as a class T such that when R(d,t) holds, 
+t is an instance of T.")

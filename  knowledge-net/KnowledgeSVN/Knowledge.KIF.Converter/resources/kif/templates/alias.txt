@@ -1,0 +1,15 @@
+(defrelation alias (?relation-1 ?relation-2) :=
+ (and (relation ?relation-1)
+      (relation ?relation-2)
+      (= ?relation-1 ?relation-2))
+ :axiom
+ (and (subrelation-of alias =)
+      (domain alias relation)
+      (range alias relation)
+      (relation alias)
+      (arity alias 2)))
+
+(documentation alias
+               "Alias is a way to specify that two relations have
+the same extension.  It is logically equivalent to the =
+relation, except that it is restricted to relations.")

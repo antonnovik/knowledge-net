@@ -1,0 +1,17 @@
+(defrelation inherited-slot-value (?class ?binary-relation ?value) :=
+ (and (class ?class)
+      (binary-relation ?binary-relation)
+      (forall (?instance ?value)
+       (=> (instance-of ?instance ?class)
+        (holds ?binary-relation ?instance ?value))))
+ :axiom
+ (and (nth-domain inherited-slot-value 1 class)
+      (nth-domain inherited-slot-value 2 binary-relation)
+      (relation inherited-slot-value)
+      (arity inherited-slot-value 3)))
+
+(documentation inherited-slot-value
+               "AN inherited-slot-value of binary relation R on class C is value V
+for which R(i,v) holds on each instance i of C.
+There is no closed-world assumption; there may exist other values v_i for which
+R(i,v_i) holds.  Inherited values are monotonic, not default.")

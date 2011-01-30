@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English, Russian">
+	<Template Priority="4" Pattern="[#E.P #M.Adjective]+ [#E.C #M.Noun]">
+		<Handler Name="PR" Arguments="0, 1" />
+	</Template>
+</Templates>

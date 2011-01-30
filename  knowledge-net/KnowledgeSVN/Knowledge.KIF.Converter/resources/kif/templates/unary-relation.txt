@@ -1,0 +1,13 @@
+(defrelation unary-relation (?relation) :=
+ (and (relation ?relation)
+      (not (empty ?relation))
+      (forall (?tuple) (=> (member ?tuple ?relation) (single ?tuple))))
+ :axiom (and (subclass-of unary-relation relation) (class unary-relation)))
+
+(=> (unary-relation ?relation) (= (arity ?relation) 1))
+
+(documentation unary-relation
+               "A unary relation is a relation of arity 1.
+Unary relations are the same thing as classes.
+In this ontology there is no logical distinction between a 
+monadic predicate (unary relation) and a type (class).")

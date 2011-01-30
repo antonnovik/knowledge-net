@@ -1,0 +1,10 @@
+(defrelation related-axioms (range related-axioms sentence)
+ (relation related-axioms) (arity related-axioms 2))
+
+(documentation related-axioms
+               "Related-Axioms is a relation that maps any object in the domain of
+discourse to a KIF sentence related to that object.  KIF sentences can
+be denoted by quoted expressions.  The object is not necessarily a
+symbol.  It is usually a class or relation or instance of a class.
+Therefore Related does not mean that the object is mentioned in the
+axiom, and there is no syntactic test for relatedness.")

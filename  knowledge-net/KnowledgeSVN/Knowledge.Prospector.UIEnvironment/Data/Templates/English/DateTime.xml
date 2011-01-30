@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English">
+
+	<Template Priority="11000" Pattern="#E.INT hour #E.INT minute #E.INT second">
+		<Handler Name="Replace" From="0" Count="6" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="hour=0, minute=2, second=4" />
+		</Handler>
+	</Template>
+</Templates>

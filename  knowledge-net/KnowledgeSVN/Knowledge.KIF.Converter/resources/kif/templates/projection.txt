@@ -1,0 +1,17 @@
+(deffunction projection
+ (<=> (projection ?relation ?column ?projection-relation)
+  (and (defined (arity ?relation))
+       (positive-integer ?column)
+       (=< ?column (arity ?relation))
+       (class ?projection-relation)
+       (forall (?projection-instance)
+        (<=> (instance-of ?instance ?projection-relation)
+         (exists (?tuple)
+          (and (member ?tuple ?relation)
+               (= (nth ?tuple ?column) ?instance)))))))
+ (function projection) (nth-domain projection 2 positive-integer)
+ (nth-domain projection 3 class) (arity projection 3))
+
+(documentation projection
+               "The projection of an N-ary relation on column i is the class whose
+instances are the ith items of each tuple in the relation.")

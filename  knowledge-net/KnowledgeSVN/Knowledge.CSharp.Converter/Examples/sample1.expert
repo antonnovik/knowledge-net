@@ -1,0 +1,86 @@
+class Test
+{
+
+	void test()
+	{
+		Sharik.sex = Animal.Sex.female;
+		Sharik.temprature_of_body = 35;	
+	}
+}
+#frames
+
+frame class Animal
+{
+	public enum Sex {male, female};
+	public int x;
+
+instance_slots
+	Sex sex=male;
+	int temprature_of_body;
+	string name="NoName";
+}
+
+frame class Person
+{
+	public enum Race {black, white, latino, asian}; 
+	
+own_slots
+	is_a Animal;
+
+instance_slots
+	Race race1=black;
+	string profession;
+	Race race=black;
+}
+
+
+frame instance Ivanov
+{
+
+own_slots
+	is_a Person;
+	race=white;
+	profession="Driver";
+	temprature_of_body=36;
+}
+
+
+frame instance Sharik
+{
+
+own_slots
+	is_a Animal;
+	sex=male;
+	temprature_of_body=40;
+	name="The Dog Sharik";
+}
+
+frame ruleset Activites (ref Act act1, int numOfAct)
+{
+	public bool isOldAnimal;
+	private int  yearsBeforeDeath;
+own_slots
+	context instance Animal;
+	goal  isOldAnimal;
+	
+	rule
+	{
+		if (Animal.age > 20)
+		
+		then
+		{
+			isOldAnimal = true;
+			yearsBeforeDeath = 50 - Animal.age;
+			if (yearsBeforeDeath < 0)
+			{
+				yearsBeforeDeath=0;
+			}
+		}
+		else
+		{
+			isOldAnimal = false;
+			yearsBeforeDeath = 50;
+		}
+	} R1;
+	
+}

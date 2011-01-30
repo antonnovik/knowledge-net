@@ -1,0 +1,17 @@
+(deffunction one-of
+ (<=> (= (one-of @members) ?class)
+  (forall (?instance)
+   (<=> (instance-of ?instance ?class) (member ?instance (setof @members)))))
+ (function one-of) (undefined (arity one-of)))
+
+(documentation one-of
+               "ONE-OF is a function for defining classes by enumerating 
+their instances.   It takes a variable number of terms as arguments, 
+and denotes the class whose instances are exactly those terms.
+   For example, (one-of yes no) denotes the class containing
+the objects called yes or no.   (instance-of yes (One-of yes no)) is
+true, and (instance-of maybe (one-of yes no) is false.  A common
+use for one-of is in defining type restrictions.  For example, 
+the relation value-type takes a class as an argument.  To specify a
+finite set of possible values for a slot, one can use
+    (value-type ?instance ?slot (one-of a b c)).")

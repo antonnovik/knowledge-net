@@ -1,0 +1,35 @@
+(deffunction exact-domain
+ (<=> (exact-domain ?relation ?domain-relation)
+  (and (relation ?relation)
+       (relation ?domain-relation)
+       (forall (?tuple)
+        (=> (member ?tuple ?relation) (not (empty (butlast ?tuple)))))
+       (forall (?tuple @args)
+        (<=> (holds ?domain-relation @args)
+         (and (member ?tuple ?relation)
+              (= (listof @args) (butlast ?tuple)))))))
+ (function exact-domain) (domain exact-domain relation)
+ (range exact-domain relation) (arity exact-domain 2))
+
+(documentation exact-domain
+               "The EXACT-DOMAIN of a relation is a relation whose tuples (all of them)
+are mapped by the relation to instances of the range.  A
+binary relation R is defined as a set of tuples of form <x,y>.  If we 
+say (= (exact-domain R) D) then all of the
+x's must be in the class D, and for each instance x of class D, the
+relation maps x to some y.  The exact-domain of a relation of arity other
+than 2 is the relation that represents a cross product.  For example,
+the notation F:A x B -> C, means that function F maps pairs <a,b> onto
+c's where a is an instance of A, b is an instance of B, and c is an
+instance of C.  The exact-domain of F is the set of pairs <a,b> that
+occur in some triple <a,b,c> in F.
+    Some treatments of functions define a function as a _mapping_ from a
+domain to a range.  This ontology treats functions as relations, and 
+relations as sets of tuples.  Thus, functions and relations are _not_
+defined relative to domains and ranges; the exact-domain is a function 
+of the set of tuples.  It follows that all functions are `total' with 
+respect to their exact-domains and `onto' with respect to their exact-ranges.
+   The exact-domain of a variable-arity relation is another variable-arity
+relation; the lengths of the tuples in the exact-domain of R is one less
+than the corresponding tuples in the relation R.  The exact-domain of a unary
+relation, or a relation that contains a tuple of length one, is undefined.")

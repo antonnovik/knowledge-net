@@ -1,0 +1,6 @@
+(defrelation range-of (inverse range-of range) (relation range-of)
+ (arity range-of 2))
+
+(documentation range-of
+               "The inverse of RANGE.  A class C is a range-of
+a relation R if C is a superclass-of the exact range of R.")

@@ -1,0 +1,14 @@
+(defrelation same-values (?instance ?slot1 ?slot2) :=
+ (and (binary-relation ?slot1)
+      (binary-relation ?slot2)
+      (<=> (holds ?slot1 ?instance ?value) (holds ?slot2 ?instance ?value)))
+ :axiom
+ (and (nth-domain same-values 2 binary-relation)
+      (nth-domain same-values 3 binary-relation)
+      (relation same-values)
+      (arity same-values 3)))
+
+(documentation same-values
+               "Two binary relations R1 and R2 have the SAME-VALUES on instance i
+if whenever R1(i,v) holds for some value v, then R2(i,v) holds for 
+the same domain instance i and value v.")

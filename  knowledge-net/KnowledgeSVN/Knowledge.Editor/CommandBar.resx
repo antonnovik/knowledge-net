@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bmp_findjps2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_findjps2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="commit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\commit.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="jaHelp" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="jaDatabase" xml:space="preserve">
+    <value>データベース</value>
+  </data>
+  <data name="jaDebug" xml:space="preserve">
+    <value>デバッグ</value>
+  </data>
+  <data name="jaQuery" xml:space="preserve">
+    <value>クエリ</value>
+  </data>
+  <data name="bmp_remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_remove.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaWindow" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="menu_bkg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\menu_bkg.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaDiagram" xml:space="preserve">
+    <value>ダイアグラム</value>
+  </data>
+  <data name="jaTools" xml:space="preserve">
+    <value>ツール</value>
+  </data>
+  <data name="kn_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\kn_refresh.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_visualize2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_visualize2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaImage" xml:space="preserve">
+    <value>イメージ</value>
+  </data>
+  <data name="enTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="enTable" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="kn_rem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\kn_rem.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enStyles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="enWindow" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="enData" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="jaBuild" xml:space="preserve">
+    <value>ビルド</value>
+  </data>
+  <data name="jaProject" xml:space="preserve">
+    <value>プロジェクト</value>
+  </data>
+  <data name="jaEdit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="enBuild" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="bmp_findjps21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_findjps2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaFormat" xml:space="preserve">
+    <value>書式</value>
+  </data>
+  <data name="bmp_down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="insert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\insert.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enDiagram" xml:space="preserve">
+    <value>Diagram</value>
+  </data>
+  <data name="jaFile" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="bmp_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="servicerunning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\servicerunning.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kn_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\kn_add.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="enDebug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="jaXML" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="enProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="menu_bkg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\menu_bkg.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enDatabase" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="enSchema" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="enEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="bmp_weave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_weave.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_up1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_cb_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_cb_no.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaSchema" xml:space="preserve">
+    <value>スキーマ</value>
+  </data>
+  <data name="bmp_opts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_opts.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaFrames" xml:space="preserve">
+    <value>フレーム</value>
+  </data>
+  <data name="kn_convert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\kn_convert.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaTable" xml:space="preserve">
+    <value>テーブル</value>
+  </data>
+  <data name="enImage" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="commit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\commit.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_open.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaData" xml:space="preserve">
+    <value>データ</value>
+  </data>
+  <data name="enView" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="otheroptions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\otheroptions.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmp_findjps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_findjps.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaStyles" xml:space="preserve">
+    <value>スタイル</value>
+  </data>
+  <data name="enFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="enFormat" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="enFrames" xml:space="preserve">
+    <value>Frames</value>
+  </data>
+  <data name="enXML" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="jaView" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="enAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\delete.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jaAction" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="bmp_visualize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bmp_visualize.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="browse3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\browse.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="commit3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\commit.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="convert1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\convert.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\delete.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="insert2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\insert.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new\refresh.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

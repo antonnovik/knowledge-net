@@ -1,0 +1,16 @@
+(defrelation maximum-slot-cardinality (?domain-class ?relation ?n) :=
+ (=> (instance-of ?instance ?domain-class)
+  (=< (value-cardinality ?instance ?relation) ?n))
+ :axiom
+ (and (relation maximum-slot-cardinality) (arity maximum-slot-cardinality 3)))
+
+(nth-domain maximum-slot-cardinality 1 class)
+
+(nth-domain maximum-slot-cardinality 2 binary-relation)
+
+(nth-domain maximum-slot-cardinality 3 nonnegative-integer)
+
+(documentation maximum-slot-cardinality
+               "MAXIMUM-VALUE-CARDINALITY specifies an upper bound on the number of
+range elements associated with any instance of a given domain class.
+   It is inspired by the CLASSIC and Loom `at-most' operator.")

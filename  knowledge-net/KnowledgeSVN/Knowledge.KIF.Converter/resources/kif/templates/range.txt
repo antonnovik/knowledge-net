@@ -1,0 +1,31 @@
+(defrelation range (?relation ?type) :=
+ (and (relation ?relation)
+      (class ?type)
+      (subclass-of (exact-range ?relation) ?type))
+ :axiom
+ (and (domain range relation)
+      (range range class)
+      (relation range)
+      (arity range 2)))
+
+(documentation range
+               "RANGE is short for ``range restriction.''
+Specifying a RANGE restriction of a relation is a way to constrain
+the class of objects which participate as the last argument to the
+relation.  For any tuple <d1 d2 ...dn r> in the relation, if class T is a
+RANGE restriction of the relation, r must be an instance of T.
+    RANGE restrictions are very helpful in maintaining ontologies.
+One can think of a range restriction as a type constraint on the value
+of a function or range of a relation.  Representation systems can use
+these specifications to classify terms and check integrity
+constraints.
+    If the restriction on the range of the relation is not captured by
+a named class, one can use specify the constraint with a predicate that 
+defines the class implicitly, coerced into a class.  For example,
+  (kappa (?x) (and (prime ?x) (< ?x 100)))
+denotes the class of prime numbers under 100.
+    It is consistent to specify more than one RANGE restriction for a
+relation, as long as they all include the EXACT-RANGE of the relation.
+    Note that range restriction is true regardless of what the restricted
+relation is applied to.  For class-specific range constraints, use
+slot-value-type.")

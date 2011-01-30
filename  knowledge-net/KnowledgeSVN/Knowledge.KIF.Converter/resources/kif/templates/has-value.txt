@@ -1,0 +1,17 @@
+(defrelation has-value (?instance ?binary-relation ?value) :=
+ (and (binary-relation ?binary-relation)
+      (holds ?binary-relation ?instance ?value))
+ :axiom
+ (and (nth-domain has-value 2 binary-relation)
+      (relation has-value)
+      (arity has-value 3)))
+
+(documentation has-value
+               "HAS-VALUE is a way to state that an instance has a value on some slot.
+Its third argument is a single value; one may use HAS-VALUE repeatedly
+for each value of a multiple-valued relation.
+  For example, (HAS-VALUE i R v_1), (HAS-VALUE i R v_2) means that
+slot R applied to domain instance i maps to values v_1 and v_2.
+In other words, R(i,v_1) and R(i,v_2) hold.
+   There is no closed-world assumption implied; there may be
+other values for the specified slot on a given domain instance.")

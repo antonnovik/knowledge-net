@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="Russian">
+	<Template Priority="1" Pattern="#E.P [, и] #E.P #E.C">
+		<Handler Name="PR" Arguments="0, 3" />
+		<Handler Name="PR" Arguments="2, 3" />
+	</Template>
+	<Template Priority="1" Pattern="#E.C #E.P [, и] #E.P">
+		<Handler Name="PR" Arguments="1, 0" />
+		<Handler Name="PR" Arguments="3, 0" />
+	</Template>
+	<Template Priority="2" Pattern="#E.P , #E.P [, и] #E.P #E.C">
+		<Handler Name="PR" Arguments="0, 5" />
+		<Handler Name="PR" Arguments="2, 5" />
+		<Handler Name="PR" Arguments="4, 5" />
+	</Template>
+	<Template Priority="2" Pattern="#E.C бывать #E.P">
+		<Handler Name="PR" Arguments="2, 0" />
+	</Template>
+	<Template Priority="1" Pattern="#E.C ( #E.P и #E.P )">
+		<Handler Name="PR" Arguments="2, 0" />
+		<Handler Name="PR" Arguments="4, 0" />
+	</Template>
+	<Template Priority="1" Pattern="#E.C #E.P #E.S">
+		<Handler Name="PR" Arguments="1, 0" />
+	</Template>
+	<Template Priority="1" Pattern="#E.C бывать разный : #E.P , #E.P [, и] #E.P">
+		<Handler Name="PR" Arguments="4, 0" />
+		<Handler Name="PR" Arguments="6, 0" />
+		<Handler Name="PR" Arguments="8, 0" />
+	</Template>
+</Templates>

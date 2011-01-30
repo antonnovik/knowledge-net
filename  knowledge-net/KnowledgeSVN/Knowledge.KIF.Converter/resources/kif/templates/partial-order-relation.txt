@@ -1,0 +1,13 @@
+(defrelation partial-order-relation (?r) :=
+ (and (reflexive-relation ?r)
+      (antisymmetric-relation ?r)
+      (transitive-relation ?r))
+ :axiom
+ (and (subclass-of partial-order-relation reflexive-relation)
+      (subclass-of partial-order-relation antisymmetric-relation)
+      (subclass-of partial-order-relation transitive-relation)
+      (class partial-order-relation)))
+
+(documentation partial-order-relation
+               "A relation is an partial-order if it is reflexive,
+antisymmetric, and transitive.")

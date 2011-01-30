@@ -1,0 +1,9 @@
+(defrelation reflexive-relation (?r) :=
+ (and (binary-relation ?r)
+      (=> (instance-of ?x (exact-domain ?r)) (holds ?r ?x ?x)))
+ :axiom
+ (and (subclass-of reflexive-relation binary-relation)
+      (class reflexive-relation)))
+
+(documentation reflexive-relation
+               "Relation R is reflexive if R(x,x) for all x in the domain of R.")

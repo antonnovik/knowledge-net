@@ -1,0 +1,182 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1224D2E6-0DAD-4226-8B82-D23027E63C17}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Knowledge.Prospector.UIEnvironment</RootNamespace>
+    <AssemblyName>Knowledge.Prospector.UIEnvironment</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="KnowledgeBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KnowledgeBuilder.Designer.cs">
+      <DependentUpon>KnowledgeBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\LocalDocumentsProviderOptionsPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\LocalDocumentsProviderOptionsPlugin.Designer.cs">
+      <DependentUpon>LocalDocumentsProviderOptionsPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\OneTextDocumentProviderOptionsPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\OneTextDocumentProviderOptionsPlugin.Designer.cs">
+      <DependentUpon>OneTextDocumentProviderOptionsPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UISettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>UISettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="MainContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainContainer.Designer.cs">
+      <DependentUpon>MainContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsEditor.Designer.cs">
+      <DependentUpon>OptionsEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="KnowledgeBuilder.resx">
+      <DependentUpon>KnowledgeBuilder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainContainer.resx">
+      <DependentUpon>MainContainer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsEditor.resx">
+      <DependentUpon>OptionsEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\LocalDocumentsProviderOptionsPlugin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LocalDocumentsProviderOptionsPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextEditor.resx">
+      <DependentUpon>TextEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="UISettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UISettings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TextEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextEditor.Designer.cs">
+      <DependentUpon>TextEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Knowledge.Prospector.Common\Knowledge.Prospector.Common.csproj">
+      <Project>{5F238122-3562-4395-A6B3-D211FFF7FA2A}</Project>
+      <Name>KnowledgeProspector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.Data\Knowledge.Prospector.Data.csproj">
+      <Project>{4A963B63-7D0E-4EE5-A474-805FA0C451D0}</Project>
+      <Name>Knowledge.Prospector.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector.IO\Knowledge.Prospector.IO.csproj">
+      <Project>{9F7E25C8-CA20-4545-84BF-977A440FE40E}</Project>
+      <Name>Knowledge.Prospector.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Knowledge.Prospector\Knowledge.Prospector.csproj">
+      <Project>{3AD1C87F-11F5-49BD-B632-0F32D362C147}</Project>
+      <Name>KnowledgeProspector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\ClauseHolders\Test.xml" />
+    <Content Include="Data\Dictionaries\English\egramtab.tab" />
+    <Content Include="Data\Dictionaries\Russian\rgramtab.tab" />
+    <Content Include="Data\Dictionaries\Russian\XmlDictionary.xml" />
+    <Content Include="Data\Results\KnowledgeNetOntology.txt" />
+    <Content Include="Data\Shortcuts\CommonShortcuts.xml" />
+    <Content Include="Data\Sources\KnowledgeMerging\KnowledgeMerging1.txt" />
+    <Content Include="Data\Sources\KnowledgeMerging\KnowledgeMerging2.txt" />
+    <Content Include="Data\Sources\Simple.txt" />
+    <Content Include="Data\Sources\TestDocument3.txt" />
+    <Content Include="Data\Sources\TestDocument2.txt" />
+    <Content Include="Data\Sources\Document.txt" />
+    <Content Include="Data\Results\OWLOntology.xml" />
+    <Content Include="Data\Results\TestOntology.xml" />
+    <Content Include="Data\Sources\TestDocument.txt" />
+    <Content Include="Data\Templates\Russian\ClassToClass.xml" />
+    <Content Include="Data\Templates\Russian\Participles.xml" />
+    <Content Include="Data\Templates\Russian\Subclasses.xml" />
+    <Content Include="Data\Templates\Test.xml" />
+    <Content Include="Data\Templates\English\DateTime.xml" />
+    <Content Include="Data\Templates\Properties.xml" />
+    <Content Include="Data\Templates\DateTime.xml" />
+    <Content Include="Data\Templates\Russian\DateTime.xml" />
+    <Content Include="Data\Templates\Russian\Properties.xml" />
+    <Content Include="Data\Templates\Russian\Rules.xml" />
+    <Content Include="Data\Templates\Subclasses.xml" />
+    <Content Include="Data\WordHolders\MonthsHolder.xml" />
+    <Content Include="Data\WordHolders\SubclassHolder.xml" />
+    <Content Include="Data\WordHolders\NumbersHolder.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,8 @@
+(defrelation symmetric-relation (?r) :=
+ (and (binary-relation ?r) (=> (holds ?r ?x ?y) (holds ?r ?y ?x))) :axiom
+ (and (subclass-of symmetric-relation binary-relation)
+      (class symmetric-relation)))
+
+(documentation symmetric-relation
+               "Relation R is symmetric if R(x,y) implies R(y,x).")
+

@@ -1,0 +1,33 @@
+(defrelation direct-subclass-of (subrelation-of direct-subclass-of subclass-of)
+ (relation direct-subclass-of) (arity direct-subclass-of 2))
+
+(<<=
+ (not (exists (?other-class)
+       (and (not (= ?other-class ?child-class))
+            (not (= ?other-class ?parent-class))
+            (subclass-of ?child-class ?other-class)
+            (subclass-of ?other-class ?parent-class))))
+ (direct-subclass-of ?child-class ?parent-class)
+ (consis
+  (not (exists (?other-class)
+        (and (not (= ?other-class ?child-class))
+             (not (= ?other-class ?parent-class))
+             (subclass-of ?child-class ?other-class)
+             (subclass-of ?other-class ?parent-class))))))
+
+(documentation direct-subclass-of
+               "DIRECT-SUBCLASS-OF is the same thing as SUBCLASS-OF with an additional
+constraint: there is no other class `between' child and parent class in
+the subclass hierarchy of the current knowledge base.  In other words, if
+ (direct-subclass-of C P) then there is no other defined class P' in
+the current knowledge base that is a superclass of C and also a
+subclass of P.
+  Note that this relation is indexical -- its truth depends the
+contents of the current knowledge base rather than the world.  There
+certaintly might be a set of tuples in the world that is a superset of
+C and a subset of P, but it can't have been defined as a class in the
+current knowledge base if (direct-subclass-of C P) is true for that
+knowledge base.
+  The direct-subclass-of of a class is not necessarily unique.
+  In systems with term classifiers, direct-subclass-of relations are
+usually inferred, rather than asserted.")

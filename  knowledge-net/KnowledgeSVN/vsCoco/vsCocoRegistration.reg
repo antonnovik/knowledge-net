@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\8.0\Generators\{FAE04EC1-301F-11D3-BF4B-00C04F79EFBC}\Coco]
+"CLSID"="{D8231E80-4710-11DA-8CD6-0800200C9A66}"
+"GeneratesDesignTimeSource"=dword:00000001
+@="Coco generator for Visual Studio 2005"

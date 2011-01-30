@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="Russian">
+
+	<Template Priority="11000" Pattern="#E.INT час #E.INT минута #E.INT секунда">
+		<Handler Name="Replace" From="0" Count="6" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="hour=0, minute=2, second=4" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11000" Pattern="#E.INT #W.Month #E.INT год">
+		<Handler Name="Replace" From="0" Count="4" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="day=0, month=1, year=2" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT год">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="year=0" />
+		</Handler>
+	</Template>
+	<Template Priority="11001" Pattern="#W.Number год">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="year=0" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT месяц">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="month=0" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT день">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="day=0" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT час">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="hour=0" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT минута">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="minute=0" />
+		</Handler>
+	</Template>
+
+	<Template Priority="11001" Pattern="#E.INT секунда">
+		<Handler Name="Replace" From="0" Count="2" >
+			<CreateEntityHandler Name="CreateDateTime" Arguments="second=0" />
+		</Handler>
+	</Template>
+
+</Templates>

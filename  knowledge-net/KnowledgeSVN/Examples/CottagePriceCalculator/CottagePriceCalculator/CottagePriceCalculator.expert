@@ -1,0 +1,169 @@
+using System;
+using System.Collections;
+
+namespace CottagePriceCalculator
+{
+	/// <summary>
+	/// Summary description for Class1.
+	/// </summary>
+	delegate uint CalcCottagePriceFunc (uint space, uint distanceFromSPb, uint numberOfBedrooms, uint numberOfFloors);
+      
+	class MainClass
+	{
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		public static uint priceCalcOfHouses (uint space, uint distanceFromSPb, uint numberOfBedrooms, uint numberOfFloors)
+		{
+			uint priceOfSqrMetre=12;
+			uint result=0;
+			if (distanceFromSPb < 1000)
+			{
+				priceOfSqrMetre=938*(1000-distanceFromSPb)/1000+12; 
+			}
+			result+=priceOfSqrMetre*space;
+
+			result+=numberOfFloors*3000;
+			result+=numberOfBedrooms*300;
+
+			return result;
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="comment">Takes a value from the console</param>
+		/// <param name="maxValue">sets maximum allowed value</param>
+		/// <returns>entered value</returns>
+		public static uint getUint (string text, int maxValue)
+		{
+			Console.Write (text);
+			string result=Console.ReadLine();
+			try
+			{
+				uint intResult = Convert.ToUInt32(result);
+				if (intResult <= 0 || intResult > maxValue)
+				{
+					Console.WriteLine ("The value must be in the range from 0 to {0}, try again...", maxValue);
+					return getUint (text, maxValue);
+				}
+				return intResult;
+			}
+			catch
+			{
+				Console.WriteLine ("Wrong value, entered value must be integer, try again...");
+				return getUint(text, maxValue);
+			}
+		}
+
+		[STAThread]
+		static void Main(string[] args)
+		{
+			//
+			// TODO: Add code to start application here
+			//
+			bool firstStart=false;
+			bool askData=true;
+			try 
+			{
+				CSharpExpert.loadKnoweldgeBase ();
+			} 
+			catch 
+			{
+				CSharpExpert.firstStart();
+				MyHouse.priceCalculator = new CalcCottagePriceFunc(MainClass.priceCalcOfHouses);
+				firstStart = true;
+			}
+			if (!firstStart)
+			{
+				Console.WriteLine ("Do you want re-enter all data?");
+				Console.WriteLine ("1 - yes");
+				Console.WriteLine ("2 - no");
+				askData = (getUint("Enter the value from 1 to 2: ", 2) == 1)? true : false;
+			}
+			bool repeat=true;
+			while (repeat)
+			{
+				if (askData)
+				{
+					Buyer.moneyAmount = getUint("Enter money amount (1 -- 1 000 000): ", 1000000);
+					MyHouse.space = getUint ("Enter house's living space (1 -- 5000): ", 5000);
+					MyHouse.distanceFromSPb = getUint ("How far is this house located from SPb?(1 -- 1000): ", 1000);
+					MyHouse.numberOfBedrooms = getUint ("How many bedroms in the house?(1 -- 200): ", 200);
+					MyHouse.numberOfFloors = getUint ("How many floors in the house? (1 -- 10): ", 10);
+				}
+				else
+					askData = true;
+
+				((MoneyEnough)CSharpExpert.getRulesetFrame("MoneyEnough")).initContext("MyHouse");
+				Buyer.isMoneyEnough = null;
+				ProductionSystem.consult ("MoneyEnough");
+				Console.WriteLine ("Money amount: {0}", Buyer.moneyAmount);
+				Console.WriteLine ("Price of the house: {0}", MyHouse.priceOfHouse);
+				Console.WriteLine ("Is money enough: {0}", Buyer.isMoneyEnough);
+
+				Console.WriteLine ("One more time?");
+				Console.WriteLine ("1 - yes");
+				Console.WriteLine ("2 - exit");
+				repeat = (getUint("Enter the value from 1 to 2: ", 2) == 1)? true : false;
+
+			}
+			CSharpExpert.saveKnoweldgeBase();
+
+		}
+	}
+}
+
+#frames
+
+frame class Human {}
+
+frame instance Buyer
+{
+	own_slots
+		is_a Human;
+		uint moneyAmount=0;
+		bool isMoneyEnough=null;
+}
+
+frame class House
+{
+	instance_slots
+	  uint space;
+	  uint distanceFromSPb;
+	  uint numberOfBedrooms;
+	  uint numberOfFloors;
+	  uint priceOfHouse;
+	  CottagePriceCalculator.CalcCottagePriceFunc priceCalculator;
+}
+
+frame instance MyHouse
+{
+	own_slots
+		is_a House;
+		space=null;
+		distanceFromSPb=null;
+		numberOfBedrooms=null;
+		numberOfFloors=null;
+		priceOfHouse=null;
+		priceCalculator=null;
+}
+
+frame ruleset MoneyEnough
+{
+	own_slots
+		context Buyer, instance House;
+		goal isMoneyEnough;
+	rule
+	{
+		if (true)
+		then 
+		{
+			CottagePriceCalculator.CalcCottagePriceFunc localFunc = priceCalculator;
+			priceOfHouse=localFunc(space, distanceFromSPb, numberOfBedrooms, numberOfFloors);
+			if (priceOfHouse <= moneyAmount)
+				isMoneyEnough = true;
+			else
+				isMoneyEnough = false;
+		}
+	} R01;
+}

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates FirstIndex="0" Language="English, Russian">
+	<Template Priority="4" Pattern="#E.C : #E.C , #E.C [, и] #E.C">
+		<Handler Name="SR" Arguments="2, 0" />
+		<Handler Name="SR" Arguments="4, 0" />
+		<Handler Name="SR" Arguments="6, 0" />
+	</Template>
+</Templates>

@@ -1,0 +1,11 @@
+(defrelation equivalence-relation (?r) :=
+ (and (reflexive-relation ?r) (symmetric-relation ?r) (transitive-relation ?r))
+ :axiom
+ (and (subclass-of equivalence-relation reflexive-relation)
+      (subclass-of equivalence-relation symmetric-relation)
+      (subclass-of equivalence-relation transitive-relation)
+      (class equivalence-relation)))
+
+(documentation equivalence-relation
+               "A relation is an equivalence relation if it is reflexive,
+symmetric, and transitive.")

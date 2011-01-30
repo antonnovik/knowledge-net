@@ -1,0 +1,13 @@
+(defrelation total-order-relation (?r) :=
+ (and (partial-order-relation ?r)
+      (=>
+       (and (instance-of ?x (exact-domain ?r))
+            (instance-of ?y (exact-domain ?r)))
+       (or (holds ?r ?x ?y) (holds ?r ?y ?x))))
+ :axiom
+ (and (subclass-of total-order-relation partial-order-relation)
+      (class total-order-relation)))
+
+(documentation total-order-relation
+               "A relation R is an total-order if it is partial-order
+for which either R(x,y) or R(y,x) for every x or y in its domain.")

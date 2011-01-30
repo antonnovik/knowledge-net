@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Shortcuts>
+	<Shortcut Name="Replace" Class="Knowledge.Prospector.Templates.Handlers.Common.ReplaceHandler, Knowledge.Prospector" />
+	<Shortcut Name="PR" Class="Knowledge.Prospector.Templates.Handlers.CreateRelationship.CreatePropertyRelationshipHandler, Knowledge.Prospector" />
+	<Shortcut Name="SR" Class="Knowledge.Prospector.Templates.Handlers.CreateRelationship.CreateSubclassRelationshipHandler, Knowledge.Prospector" />
+	<Shortcut Name="CreateDateTime" Class="Knowledge.Prospector.Templates.Handlers.CreateEntity.CreateDateTimeEntityHandler, Knowledge.Prospector" />
+	<Shortcut Name="NewRule" Class="Knowledge.Prospector.Templates.Handlers.Common.CreateConditionalRuleHandler, Knowledge.Prospector" />
+	<Shortcut Name="CreateClassToClassRelationship" Class="Knowledge.Prospector.Templates.Handlers.CreateRelationship.CreateClassToClassRelationshipHandler, Knowledge.Prospector" />
+</Shortcuts>

@@ -1,0 +1,18 @@
+(defrelation exhaustive-subclass-partition (?c ?class-partition) :=
+ (and (subclass-partition ?c ?class-partition)
+      (forall (?instance)
+       (=> (instance-of ?instance ?c)
+        (exists (?subclass)
+         (and (member ?subclass ?class-partition)
+              (member ?instance ?subclass))))))
+ :axiom
+ (and (subrelation-of exhaustive-subclass-partition subclass-partition)
+      (relation exhaustive-subclass-partition)
+      (arity exhaustive-subclass-partition 2)))
+
+(documentation exhaustive-subclass-partition
+               "A subrelation-partition of a class C is a set of
+mutually-disjoint classes (a subclass partition) which covers C.
+Every instance of C is is an instance of exactly one of the subclasses
+in the partition.")
+

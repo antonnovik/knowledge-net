@@ -1,0 +1,15 @@
+(defrelation subclass-partition (?c ?class-partition) :=
+ (and (class ?c)
+      (class-partition ?class-partition)
+      (forall (?subclass)
+       (=> (member ?subclass ?class-partition) (subclass-of ?subclass ?c))))
+ :axiom
+ (and (domain subclass-partition class)
+      (range subclass-partition class-partition)
+      (relation subclass-partition)
+      (arity subclass-partition 2)))
+
+(documentation subclass-partition
+               "A subclass-partition of a class C is a set of
+subclasses of C that are mutually disjoint.")
+

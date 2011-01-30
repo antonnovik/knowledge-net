@@ -1,0 +1,27 @@
+(defrelation domain (?relation ?restriction) :=
+ (and (binary-relation ?relation)
+      (class ?restriction)
+      (subclass-of (exact-domain ?relation) ?restriction))
+ :axiom
+ (and (domain domain binary-relation)
+      (range domain class)
+      (relation domain)
+      (arity domain 2)))
+
+(documentation domain
+               "DOMAIN is short for ``domain restriction''.  A domain restriction
+of a binary relation is a constraint on the exact-domain of the
+relation.  A domain restriction is superclass of the exact-domain;
+that is, all instances of the exact-domain of the relation are also
+instances of the DOMAIN restriction.  Thus, the DOMAIN of a relation 
+is not unique.
+   In an ontology, specifying a domain restriction of a binary
+relation is a way to specify partial information about the objects 
+to which the relation applies.  For example, one can state that
+favorite-beer is a relation from beer drinkers to beers as
+ (domain favorite-beer person).  This says that all people who have
+a favorite-beer are instances of person, even though there may be some
+instances of person who do not have a favorite beer.
+   Representation systems can use these specifications to classify terms and
+check integrity constraints.")
+

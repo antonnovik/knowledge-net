@@ -1,0 +1,11 @@
+(defrelation antisymmetric-relation (?r) :=
+ (and (binary-relation ?r)
+      (=> (and (holds ?r ?x ?y) (holds ?r ?y ?x)) (= ?x ?y)))
+ :axiom
+ (and (subclass-of antisymmetric-relation binary-relation)
+      (class antisymmetric-relation)))
+
+(documentation antisymmetric-relation
+               "Relation R is antisymmetric if for distinct x and y, 
+R(x,y) implies not R(y,x).  In other words, for all x,y,
+R(x,y) and R(y,x) => x=y.")

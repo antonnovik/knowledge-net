@@ -1,0 +1,8 @@
+(defrelation asymmetric-relation (?r) :=
+ (and (binary-relation ?r) (not (symmetric-relation ?r))) :axiom
+ (and (subclass-of asymmetric-relation binary-relation)
+      (class asymmetric-relation)))
+
+(documentation asymmetric-relation
+               "Relation R is asymmetric if it is not symmetric.")
+

@@ -1,0 +1,37 @@
+(deffunction exact-range
+ (<=> (exact-range ?relation ?range-class)
+  (and (relation ?relation)
+       (class ?range-class)
+       (forall (?range-instance)
+        (<=> (holds ?range-class ?range-instance)
+         (exists (?tuple)
+          (and (member ?tuple ?relation)
+               (= (last ?tuple) ?range-instance)))))))
+ (function exact-range) (domain exact-range relation) (range exact-range class)
+ (arity exact-range 2))
+
+(documentation exact-range
+               "A relation maps elements of a domain onto element of a range. 
+For each tuple in the relation, the last item is in the range, 
+and the tuple formed by the preceeding items is in the domain.
+The EXACT-RANGE is the class whose instances are exactly those that 
+appear in the last item of some tuple in the relation.  
+  The EXACT-RANGE of a relation is always a class, while the 
+exact-domain may be a relation of any arity, including variable 
+arity (e.g., the + function can take 0 or more arguments, but its
+exact-range is some subset of the class NUMBER).
+  In KIF, functions are a special case of relations.  This
+definition is based on relational terminology, but applies to
+functions as well.  In discussions of functions, one often sees the
+notation f:X -> Y.  Usually, X and Y are sets of elements x and y.  In
+this ontology, the unary function f is also a binary relation, where X
+is the exact-domain of f and Y is the exact-range of f.  This
+generalizes to cross products.  For the function g:A x B x C -> D, the
+domain is the ternary relation of tuples (a, b, c) and the range is
+the unary relation of tuples (d).  The exact-range of just those d's
+that are actually the value of g on some (a, b, c).
+  The EXACT-RANGE of a function is unique, and every function f 
+maps (exact-domain f) _onto_ (exact-range f).  Sometimes the EXACT-RANGE
+of f is called the ``image of (exact-domain f) under d.''
+  The relation RANGE is a _constraint_ on the possible values of a 
+function.  It is a superclass of the EXACT-RANGE, and is not unique.")
