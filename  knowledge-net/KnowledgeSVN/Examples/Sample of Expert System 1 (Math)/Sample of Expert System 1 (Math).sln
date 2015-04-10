@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample of Expert System 1 (Math)", "Sample of Expert System 1 (Math)\Sample of Expert System 1 (Math).csproj", "{34B0BF36-0A43-43F0-B04E-4357830483F9}"
 EndProject
 Global

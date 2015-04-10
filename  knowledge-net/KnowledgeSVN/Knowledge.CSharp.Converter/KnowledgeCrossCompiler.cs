@@ -5,6 +5,7 @@ using System.Collections;
 using System.IO;
 using Knowledge;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Knowledge
 {
@@ -816,7 +817,7 @@ public class ExpComp
 			StreamWriter s=null;
 			try 
 			{
-				s = new StreamWriter(arg[0]+"_.cs", false, System.Text.Encoding.Default);
+				s = new StreamWriter(arg[0]+"_.cs", false, System.Text.Encoding.UTF8);
 				generator.generateOutputProgram(s);
 			} 
 			catch (IOException) 
@@ -1175,7 +1176,7 @@ public class ExpComp
 			{
 				s.WriteLine ("\t\tpublic override string getComment()");
 				s.WriteLine ("\t\t{");
-				s.WriteLine ("\t\t\treturn {0} ;", rule.comment);
+                s.WriteLine("\t\t\treturn {0} ;", System.Text.Encoding.GetEncoding(1251).GetString(Encoding.GetEncoding(1252).GetBytes(rule.comment)));
 				s.WriteLine ("\t\t}");
 			}
 			// ***

@@ -1,12 +1,14 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2F03222-E0FB-4DCF-A3A0-862492526C70}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge.Core", "Knowledge.Core\Knowledge.Core.csproj", "{9E91251A-934F-457C-8D17-EB59360265EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge.Editor", "Knowledge.Editor\Knowledge.Editor.csproj", "{CF94F6C6-94B1-4262-B0F1-BE7C6199E280}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Knowledge.Setup", "Knowledge.Setup\KnowledgeNETFrameworkSetup.vdproj", "{3D8A4926-1950-44A1-B629-50C4E2C98D0B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2F03222-E0FB-4DCF-A3A0-862492526C70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge.Setup.CustomAction", "Knowledge.Setup.CustomAction\Knowledge.Setup.CustomAction.csproj", "{D5726E34-32AA-44B7-9827-366E776DA3E3}"
 EndProject

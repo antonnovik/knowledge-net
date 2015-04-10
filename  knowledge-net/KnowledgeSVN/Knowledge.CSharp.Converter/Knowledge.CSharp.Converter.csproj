@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -33,6 +34,8 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -120,23 +123,15 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Knowledge .NET.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Knowledge .NET.atg</DependentUpon>
-    </Compile>
+    <Compile Include="Knowledge .NET.cs" />
     <Compile Include="KnowledgeCrossCompiler.cs">
       <SubType>Code</SubType>
     </Compile>
     <Content Include="Knowledge .NET %28old%29.atg">
       <Generator>Coco</Generator>
     </Content>
-    <None Include="Knowledge .NET.atg">
-      <Generator>Coco</Generator>
-      <LastGenOutput>Knowledge .NET.cs</LastGenOutput>
-      <CustomToolNamespace>Knowledge</CustomToolNamespace>
-    </None>
     <None Include="Examples\sample1.expert" />
+    <None Include="Knowledge .NET.atg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

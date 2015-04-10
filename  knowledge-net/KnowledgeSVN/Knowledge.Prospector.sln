@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge.Prospector", "Knowledge.Prospector\Knowledge.Prospector.csproj", "{3AD1C87F-11F5-49BD-B632-0F32D362C147}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge.Prospector.UIEnvironment", "Knowledge.Prospector.UIEnvironment\Knowledge.Prospector.UIEnvironment.csproj", "{1224D2E6-0DAD-4226-8B82-D23027E63C17}"

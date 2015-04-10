@@ -27,7 +27,7 @@ namespace Knowledge.Library
 		{
 			if (instance == null) 
 			{
-				throw new NullReferenceException("CSharpExpertAbstract::instance member should be intialized by means CreateInstance() method.");
+				throw new NullReferenceException("CSharpExpertAbstract::instance member should be intialized by means of CreateInstance() method.");
 			}
 
 			return instance;
