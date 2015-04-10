@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CottagePriceCalculator", "CottagePriceCalculator\CottagePriceCalculator.csproj", "{FAE8A025-E58C-4040-851D-A3FD5D73E1BE}"
 EndProject
 Global
